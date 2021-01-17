@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Profile{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="profile-container">
+        <div id="profile__about">
+            <div id="profile__about-me">
+                <h3>{{ user.username }}</h3>
+                <p>About: {{ request.user.profile.about|default:"Missing" }}</p>
+                <p>Since: {{ request.user.profile.joined|date:"j/m/Y" }}</p>
+            </div>
+            <div id="profile__about-avatar">
+                  {% with avatar=user_profile.get_avatar %}
+                        <img id="avatar-main" src="{{ avatar|thumbnail_url:'avatar-main' }}">
+                  {% endwith %}
+                <div class="interact-buttons">
+                    {% if request.user.profile == user_profile %}
+                    <a class="btn btn-outline-primary" href="{% url 'edit_profile' user.username %}" role="button">Edit</a>
+                    {% else %}
+                        <a class="btn btn-outline-primary" href="#" role="button">Message</a>
+                        <a class="btn btn-outline-primary" href="#"
+                            role="button">Follow</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="profile__stats">
+            <div class="follower-info">
+                <p>123123213213</p>
+                <p>Followers</p>
+            </div>
+            <div class="follower-info">
+                <p>123123213213</p>
+                <p>Following</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

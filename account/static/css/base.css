@@ -1,0 +1,214 @@
+body {
+     font-family: 'Lato', sans-serif;
+}
+.errorlist {
+    background-color: #ec8f896b;
+    color: #a76161;
+    border-radius: 3px;
+    padding: 1rem;
+    margin: 0;
+    list-style: none;
+    margin-bottom: 2%;
+}
+
+.title,
+.log-out {
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+}
+
+.login-form,
+.change-password-form,
+.register-form {
+    margin: 0 auto;
+    width: 20%;
+}
+
+.change-password-success {
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.login-form h1 {
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#register-message {
+    margin: 0;
+    padding: 0;
+}
+
+.authButton {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid #343a40;
+    transition: 0.2s;
+}
+
+.authButton:hover {
+    transform: scale(1.05);
+}
+
+.popover-body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.popover-body a {
+    padding: 0.1em;
+    width: 75%;
+    display: inline-block;
+    margin: 0 auto;
+}
+#avatar-link {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-decoration: none;
+}
+
+#avatar {
+    border-radius: 50%;
+    height: 40px;
+}
+
+
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 5% auto;
+}
+
+#profile__about {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+#profile__about-avatar {
+    text-align: center;
+}
+
+#avatar-main,
+#avatar-main-edit,
+#avatar-default-edit,
+#avatar-main-edit-default {
+    height: 170px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+#profile__stats {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.follower-info {
+    padding: 0.5rem;
+    border-top: 1px solid white;
+    transition: 0.5s all;
+    margin: 0.5rem;
+}
+
+.follower-info:hover {
+    cursor: pointer;
+    border-top: 1px solid black;
+}
+
+#profile__about-edit {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.modal-body {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 100% !important;
+    min-height: 100% !important;
+    height: 10rem;
+}
+
+.avatar-preview-container {
+    position: relative;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 1.7%;
+    padding: 0;
+    border: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.avatar-preview-container:hover {
+    border: 3px solid #6b91fb9c;
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+    right: -0.5rem;
+    top: -1rem;
+    transition: all 0.5s;
+}
+
+.hidden {
+    display: none;
+}
+
+.close:focus {
+    outline: none;
+}
+
+.close:hover {
+    transform: scale(1.3);
+}
+
+.close:active {
+    transform: scale(1);
+}
+
+.selected {
+    border: 3px solid #6b91fb9c;
+}
+
+.unselected {
+    border: 3px solid transparent;
+}
+
+.avatar-preview {
+    width: 100%;
+    height: 100%;
+}
+
+.avatar-warning {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.7rem;
+    font-size: 0.9rem;
+}
+
+#save-edit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#modal-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+

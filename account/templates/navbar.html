@@ -1,0 +1,44 @@
+{% load thumbnail %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand d-lg-none" href="#">Navbar</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav">
+      {% if request.user.is_authenticated %}  
+      <li class="nav-item">
+          {% with avatar=request.user.profile.get_avatar %}
+            <a role="button" id="avatar-link" class="nav-link" href="#">
+                <img id="avatar" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="User Avatar" tabindex="-1">
+            </a>
+        {% endwith %}
+        <div id="popover-profile" style="display: none;">
+            <h6>Welcome {{ user.username }}</h6>
+            {% if section == "dashboard" or section == "edit" %}
+                <a class="btn authButton" href="{% url 'profile' user.username %}" role="button">Profile</a>
+            {% else %}
+                <a class="btn authButton" href="{% url 'dashboard' %}" role="button">Dashboard</a>
+            {% endif %}
+            <a class="btn authButton" href="{% url 'logout' %}" role="button">Logout</a>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
