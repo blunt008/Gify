@@ -26,6 +26,7 @@ class NewVisitorTest(unittest.TestCase):
         register_button = self.browser.find_element_by_tag_name("a")
         register_button.click()
         time.sleep(1)
+
         self.assertIn("Create an account", self.browser.title)
 
 
