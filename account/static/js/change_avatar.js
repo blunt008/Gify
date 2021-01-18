@@ -49,7 +49,11 @@ const removeAvatar = (event, div, avatarCount) => {
             return response.json()
         }
     })
-    .then(response => console.log(response.status))
+    .then(response => {
+        if (response.selected) {
+            switchToDefaultAvatar()
+        }
+    })
 }
 
 const getCookie = (name) => {

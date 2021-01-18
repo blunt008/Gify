@@ -1,6 +1,7 @@
 import json
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.http import HttpResponse, JsonResponse, HttpRequest
 from django.contrib.auth import authenticate, login 
 from django.contrib.auth.views import LoginView, PasswordChangeView
@@ -17,6 +18,7 @@ from django.core.files import File
 from django.db.models import ProtectedError
 from django import forms 
 from network.settings import STATIC_URL
+
 from easy_thumbnails.files import get_thumbnailer
 
 from .forms import LoginForm, ChangePasswordForm, UserRegistrationForm, EditUserForm
@@ -117,7 +119,7 @@ def edit_profile(request: HttpRequest, name: str) -> HttpResponse:
             if avatar:
                 edited_profile.unselect_avatar()
                 Avatar.objects.create(user=edited_profile, avatar=avatar)
-            return redirect("dashboard")
+            return redirect(reverse("edit_profile", args=[user_profile.username]))
     else:
         form = EditUserForm(instance=user_profile)
 
@@ -212,9 +214,19 @@ def delete_avatar(request: HttpRequest) -> HttpResponse:
     except (Avatar.DoesNotExist, Profile.DoesNotExists):
         avatar = None
         user_profile = None
+        is_current = False
 
     if is_current:
         user_profile.set_default_avatar()
+        thumbnailer = get_thumbnailer(avatar.avatar)
+        thumbnailer.delete_thumbnails()
+        avatar.delete()
+        response = JsonResponse({
+            "status": "ok",
+            "selected": True
+        })
+        response.status_code = 201
+        return response
 
     if avatar and user_profile:
         try:
