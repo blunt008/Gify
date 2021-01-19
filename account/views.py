@@ -119,7 +119,7 @@ def edit_profile(request: HttpRequest, name: str) -> HttpResponse:
             if avatar:
                 edited_profile.unselect_avatar()
                 Avatar.objects.create(user=edited_profile, avatar=avatar)
-            return redirect(reverse("edit_profile", args=[user_profile.username]))
+            return redirect(reverse("profile", args=[user_profile.username]))
     else:
         form = EditUserForm(instance=user_profile)
 
