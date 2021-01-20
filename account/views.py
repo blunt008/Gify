@@ -182,6 +182,7 @@ def change_avatar(request: HttpRequest) -> HttpResponse:
 
     try:
         avatar = Avatar.objects.get(id=avatar_id)
+        request.user.profile.change_avatar(avatar)
     except Avatar.DoesNotExist:
         avatar = None
     
@@ -193,7 +194,7 @@ def change_avatar(request: HttpRequest) -> HttpResponse:
         return response
     else:
         response = JsonResponse({
-            "error": "Error when handling avatar change"
+            "status": "Error when handling avatar change"
         })
         response.status_code = 500
         return response
