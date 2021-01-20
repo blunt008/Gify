@@ -3,8 +3,14 @@ const saveBtn = document.getElementById("save");
 const closeModal = document.getElementById("close");
 
 
-const updateAvatar = () => {
-    console.log("update new avatar");
+const updateAvatar = (url) => {
+    // Update both main and navbar avatar to the url received
+    const navAvatar = document.getElementById("avatar");
+
+    navAvatar.src = url;
+    userAvatar.src = url;
+
+    closeModal.click();
 }
 
 const switchToDefaultAvatar = () => {
@@ -208,8 +214,7 @@ if (saveBtn) {
                 }
             })
             .then(response => {
-                // TODO
-                updateAvatar();
+                updateAvatar(response.url);
             })
             .catch((error) => console.log(error.message))
         } else {
