@@ -188,7 +188,8 @@ def change_avatar(request: HttpRequest) -> HttpResponse:
     
     if avatar:
         response = JsonResponse({
-            "status": "ok"
+            "status": "ok",
+            "url": avatar.avatar.url
         })
         response.status_code = 200
         return response
@@ -234,9 +235,8 @@ def delete_avatar(request: HttpRequest) -> HttpResponse:
             thumbnailer = get_thumbnailer(avatar.avatar)
             thumbnailer.delete_thumbnails()
             avatar.delete()
-
             return JsonResponse({
-                "status": "ok"
+                "status": "ok",
             })
         except ProtectedError:
             return JsonResponse({
