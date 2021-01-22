@@ -207,6 +207,11 @@ body {
 #save-edit {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+}
+
+#save-edit a {
+    margin-right: 10px;
 }
 
 #modal-message {
