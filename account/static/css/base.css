@@ -216,4 +216,19 @@ body {
     align-items: center;
 }
 
+#editButton {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid #343a40;
+    color: black;
+    transition: 0.2s;
+}
 
+#editButton:hover {
+    background: transparent;
+    transform: scale(1.05);
+    transform: translateY(-2.5px);
+}
+
+#editButton:active {
+    transform: translateY(0);
+}
