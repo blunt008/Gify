@@ -24,6 +24,15 @@ class Profile(models.Model):
     def __str__(self):
         return f"Profile: {self.username}"
 
+    def change_avatar(self, avatar) -> None:
+        """ 
+        Change avatar by unselecting current one and setting
+        'selected = True' to the avatar in the formal parameter
+        """
+        self.unselect_avatar()
+        avatar.selected = True
+        avatar.save()
+
     def get_avatar(self):
         avatar = self.avatars.get(selected=True).avatar
 

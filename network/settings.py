@@ -138,7 +138,7 @@ MEDIA_URL = '/media/'
 # easy_thumbnails config
 THUMBNAIL_ALIASES = {
     '': {
-        'avatar': {'size': (40, 40), 'crop': 'smart'},
+        'avatar': {'size': (40, 40)},
         'avatar-main': {"size": (170, 170)},
     },
 }

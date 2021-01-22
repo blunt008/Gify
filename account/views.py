@@ -182,18 +182,20 @@ def change_avatar(request: HttpRequest) -> HttpResponse:
 
     try:
         avatar = Avatar.objects.get(id=avatar_id)
+        request.user.profile.change_avatar(avatar)
     except Avatar.DoesNotExist:
         avatar = None
     
     if avatar:
         response = JsonResponse({
-            "status": "ok"
+            "status": "ok",
+            "url": avatar.avatar.url
         })
         response.status_code = 200
         return response
     else:
         response = JsonResponse({
-            "error": "Error when handling avatar change"
+            "status": "Error when handling avatar change"
         })
         response.status_code = 500
         return response
@@ -233,9 +235,8 @@ def delete_avatar(request: HttpRequest) -> HttpResponse:
             thumbnailer = get_thumbnailer(avatar.avatar)
             thumbnailer.delete_thumbnails()
             avatar.delete()
-
             return JsonResponse({
-                "status": "ok"
+                "status": "ok",
             })
         except ProtectedError:
             return JsonResponse({
