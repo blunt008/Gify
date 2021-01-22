@@ -113,7 +113,7 @@ body {
 #profile__stats {
     margin-top: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
 }
 
