@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse, JsonResponse, HttpRequest
 from django.contrib.auth import authenticate, login 
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
@@ -23,6 +23,13 @@ from easy_thumbnails.files import get_thumbnailer
 
 from .forms import LoginForm, ChangePasswordForm, UserRegistrationForm, EditUserForm
 from .models import Avatar, Profile
+
+
+class MyPasswordResetView(PasswordResetView):
+    """
+    Custom password reset view to use custom html template
+    """
+    template_name = "registration/password_reset_email.html"
 
 @method_decorator(redirect_if_logged_in, name='dispatch')
 class MyLoginView(LoginView):
