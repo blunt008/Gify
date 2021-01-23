@@ -13,8 +13,10 @@
             <input type="hidden" name='next' value='{{ next }}'>
             <div class="button-container"> 
                 <input type="submit" value="Login" class="btn authButton">
-                <p id="register-message">Don't have account?  
-                <a href="{% url 'register' %}">Register</a> here</p>
+                <p id="register-message">Don't have account? Register
+                <a href="{% url 'register' %}">here</a> or request new password
+                <a href="#">here</a>
+                </p>
             </div>
         </form>
     </div>     
