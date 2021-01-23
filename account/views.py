@@ -63,28 +63,21 @@ def register(request: HttpRequest) -> HttpResponse:
         user_form = UserRegistrationForm(data=request.POST, files=request.FILES)
         if user_form.is_valid():
             avatar = request.FILES.get("avatar")
-            # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            # Set the chosen password
             new_user.set_password(
                 user_form.cleaned_data["password"]
             )
             new_user.save()
             new_user_profile = Profile.objects.create(user=new_user,
                                                       username=new_user.username)
-
             if avatar:
                 Avatar.objects.create(user=new_user_profile, avatar=avatar)
             else:
                 Avatar.objects.create(user=new_user_profile)
 
-            return render(
-                request,
-               "account/register_done.html",
-                {
-                    "new_user": new_user
-                }
-            )
+            return render(request,
+                          "account/register_done.html",
+                          { "new_user": new_user})
     else:
         user_form = UserRegistrationForm()
 
