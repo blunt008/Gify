@@ -16,7 +16,8 @@ class LoginForm(AuthenticationForm):
         password = forms.CharField(
                     label=_('Password'),
                     strip=False,
-                    widget=forms.PasswordInput(attrs={'autocomplete': 'off', 'class': 'form-control'})
+                    widget=forms.PasswordInput(attrs={'autocomplete': 'off',
+                                                      'class': 'form-control'})
                 )
         error_messages = {
                 'invalid_login': _(
@@ -28,18 +29,21 @@ class LoginForm(AuthenticationForm):
 class ChangePasswordForm(PasswordChangeForm):
         new_password1 = forms.CharField(
                 label=_('New password'),
-                widget=forms.PasswordInput(attrs={'autocomplete': 'off', 'class': 'form-control'}),
+                widget=forms.PasswordInput(attrs={'autocomplete': 'off',
+                                                  'class': 'form-control'}),
                 strip=False
             )
         new_password2 = forms.CharField(
                 label=_('New password confirmation'),
                 strip=False,
-                widget=forms.PasswordInput(attrs={'autocomplete': 'off', 'class': 'form-control'})
+                widget=forms.PasswordInput(attrs={'autocomplete': 'off',
+                                                  'class': 'form-control'})
             )
         old_password = forms.CharField(
                 label=_('Old password'),
                 strip=False,
-                widget=forms.PasswordInput(attrs={'autocomplete': 'off', 'class': 'form-control'})
+                widget=forms.PasswordInput(attrs={'autocomplete': 'off',
+                                                  'class': 'form-control'})
             )
 
 class UserRegistrationForm(forms.ModelForm):
