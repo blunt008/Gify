@@ -21,15 +21,17 @@ from network.settings import STATIC_URL
 
 from easy_thumbnails.files import get_thumbnailer
 
-from .forms import LoginForm, ChangePasswordForm, UserRegistrationForm, EditUserForm
+from .forms import LoginForm, ChangePasswordForm, UserRegistrationForm, EditUserForm, MyPasswordResetForm
 from .models import Avatar, Profile
 
 
 class MyPasswordResetView(PasswordResetView):
     """
-    Custom password reset view to use custom html template
+    Custom password reset view to use custom html template 
+    and custom password reset form
     """
     template_name = "registration/password_reset_email.html"
+    form_class = MyPasswordResetForm
 
 @method_decorator(redirect_if_logged_in, name='dispatch')
 class MyLoginView(LoginView):
