@@ -144,3 +144,11 @@ THUMBNAIL_ALIASES = {
 }
 
 THUMBNAIL_DEBUG = True
+
+# Console backend. Print emails to stdout
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+
+
+

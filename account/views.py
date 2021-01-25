@@ -30,7 +30,7 @@ class MyPasswordResetView(PasswordResetView):
     Custom password reset view to use custom html template 
     and custom password reset form
     """
-    template_name = "registration/password_reset_email.html"
+    template_name = "registration/password_reset_form.html"
     form_class = MyPasswordResetForm
 
 @method_decorator(redirect_if_logged_in, name='dispatch')
