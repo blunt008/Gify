@@ -4,7 +4,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse, JsonResponse, HttpRequest
 from django.contrib.auth import authenticate, login 
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView
+from django.contrib.auth.views import LoginView, PasswordChangeView,\
+                                        PasswordResetView, \
+                                        PasswordResetDoneView, \
+                                        PasswordResetConfirmView
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
@@ -21,8 +24,18 @@ from network.settings import STATIC_URL
 
 from easy_thumbnails.files import get_thumbnailer
 
-from .forms import LoginForm, ChangePasswordForm, UserRegistrationForm, EditUserForm, MyPasswordResetForm
+from .forms import LoginForm, ChangePasswordForm,\
+                    UserRegistrationForm,\
+                    EditUserForm, MyPasswordResetForm, \
+                    MyPasswordResetConfirmForm
 from .models import Avatar, Profile
+
+
+class MyPasswordResetConfirmView(PasswordResetConfirmView):
+    """
+    Custom view for confirming new passwords
+    """
+    form_class = MyPasswordResetConfirmForm
 
 
 class MyPasswordResetView(PasswordResetView):
@@ -32,6 +45,7 @@ class MyPasswordResetView(PasswordResetView):
     """
     template_name = "registration/password_reset_form.html"
     form_class = MyPasswordResetForm
+
 
 @method_decorator(redirect_if_logged_in, name='dispatch')
 class MyLoginView(LoginView):
