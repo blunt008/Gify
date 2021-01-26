@@ -257,12 +257,17 @@ body {
       }
 
       #register-message {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
           width: 80%;
       }
 
       .button-container input {
-          font-size: 1.5rem;
+          font-size: 1.8rem;
+      }
+
+      .form-control {
+          font-size: 1.8rem;
+          padding: 1rem;
       }
 }
 
@@ -274,3 +279,55 @@ body {
          width: 50%;
      }
 }
+
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+      .container-fluid {
+          margin: auto auto;
+          margin-top: 20vh;
+      }
+
+      .title h1 {
+          font-size: 5rem;
+      }
+
+      .login-form {
+          width: 50%;
+          font-size: 2rem;
+      }
+
+      #register-message {
+          font-size: 1.5rem;
+          width: 80%;
+      }
+
+      .button-container input {
+          font-size: 1.8rem;
+      }
+
+      .form-control {
+          font-size: 1.8rem;
+          padding: 1rem;
+      }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .login-form {
+        width: 50%;
+    }    
+}
+
+
+
+
+
+
+
