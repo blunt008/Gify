@@ -5,7 +5,6 @@ from . import views
 from . import forms
 
 urlpatterns = [
-            path('', views.dashboard, name='dashboard'),
             path("register/", views.register, name="register"),
             path('login/', views.MyLoginView.as_view(),name='login'),
             path('logout/', auth_views.LogoutView.as_view(), name='logout'),
