@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}GIFy{% endblock %}
 
 {% block navbar %}
     {% include "navbar.html" %}
 {% endblock %}
 
 {% block content %}
-    <h1>Dashboard</h1>
-    <p>Welcome to your dashboard</p>
+    {% include './list_ajax.html' %} 
 {% endblock %}
