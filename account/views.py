@@ -63,7 +63,7 @@ class MyPasswordChangeView(PasswordChangeView):
     form_class = ChangePasswordForm
 
 @login_required
-def dashboard(request: HttpRequest) -> HttpResponse:
+def index(request: HttpRequest) -> HttpResponse:
     """
     Render dashboard.html page. Only for logged in users
     """

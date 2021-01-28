@@ -1,15 +1,17 @@
-<div id="feed">
+{% load embed_video_tags %}
     <h1>Test</h1>
-    <div class="card posts">
-    {% for post in posts %}
-    <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+    {% for video in videos %}
+    <div class="card post">
+    <div class="embed-responsive embed-responsive-16by9">
+<iframe src="https://youtube.com/embed/co7KgV2edvI" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height:
+                                  100%; position: absolute;"></iframe>
+    </div>
         <div class="card-body">
-              <h5 class="card-title">Card title</h5>
               <p class="card-text">This natural lead-in to additional content.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
     </div>
     {% endfor %}
     </div>
-</div>
