@@ -9,3 +9,22 @@
 {% block content %}
     {% include './list_ajax.html' %} 
 {% endblock %}
+
+{% block domready %}
+    const container = document.getElementById("container");
+
+    const enableInfiniteScroll = () => {
+        let block_request = false;
+
+        container.addEventListener("scroll", event => {
+            const { scrollTop, clientHeight, scrollHeight } = container;
+            console.log(scrollTop);
+            console.log(clientHeight);
+            console.log(scrollHeight);
+        })
+    };
+
+
+    
+    enableInfiniteScroll();
+{% endblock %}
