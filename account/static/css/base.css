@@ -1,6 +1,10 @@
 body {
      font-family: 'Lato', sans-serif;
-     background-color: rgb(28, 30, 33);
+     background-color: rgb(13, 13, 14);
+}
+
+#gify-nav {
+    background: rgb(26, 29, 33) !important;
 }
 
 .errorlist {
@@ -249,7 +253,7 @@ body {
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 1.5rem;
-    background: rgb(33, 37, 41);
+    background: rgb(28, 30, 33);
 }
 
 .post.clicked {
