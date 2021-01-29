@@ -18,9 +18,11 @@
 
         container.addEventListener("scroll", event => {
             const { scrollTop, clientHeight, scrollHeight } = container;
-            console.log(scrollTop);
-            console.log(clientHeight);
-            console.log(scrollHeight);
+            if (scrollTop + clientHeight >=
+                scrollHeight && block_request == false) {
+                block_request = true;
+                alert("bottom");
+            }
         })
     };
 

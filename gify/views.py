@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Video
+from .models import Post
 
 # Create your views here.
 
@@ -8,7 +8,7 @@ def index(request):
     """
     Index page
     """
-    videos = Video.objects.all()[:3]
+    videos = Post.objects.all()
     return render(request,
                   "gify/home.html",
                   {"section": "index", "videos": videos})
