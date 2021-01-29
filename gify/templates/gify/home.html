@@ -12,16 +12,44 @@
 
 {% block domready %}
     const container = document.getElementById("container");
+    const csrfToken = Cookies.get("csrftoken");
+
+    async function fetchPosts(page) {
+        let response = await fetch(`/?page=${page}`, {
+            method: "GET",
+            headers: {
+                "X-CSRFToken": csrfToken,
+                "Content-Type": "application/json"
+            },
+            mode: "same-origin"
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+            return await response.text()
+        }
+    }
 
     const enableInfiniteScroll = () => {
         let block_request = false;
+        let page = 1;
 
         container.addEventListener("scroll", event => {
             const { scrollTop, clientHeight, scrollHeight } = container;
-            if (scrollTop + clientHeight >=
+            if (scrollTop + clientHeight + 50 >=
                 scrollHeight && block_request == false) {
                 block_request = true;
-                alert("bottom");
+                page++;
+                fetchPosts(page)
+                .then(response => {
+                    if (response.length == 0) {
+                        block_request = true;
+                    } else {
+                        container.innerHTML += response;
+                        block_request = false;
+                    }
+                })
             }
         })
     };
