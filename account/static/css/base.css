@@ -13,6 +13,7 @@ html, body {
 
 #gify-nav {
     background: rgb(26, 29, 33) !important;
+    width: 99%;
 }
 
 .errorlist {
