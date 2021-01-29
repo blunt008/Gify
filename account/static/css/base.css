@@ -1,7 +1,8 @@
 body {
      font-family: 'Lato', sans-serif;
-     /* background-color: rgb(28, 30, 33); */
+     background-color: rgb(28, 30, 33);
 }
+
 .errorlist {
     background-color: #ec8f896b;
     color: #a76161;
@@ -264,6 +265,7 @@ body {
     width: 30%;
     margin: 0 auto;
     margin-bottom: 2rem;
+    background: rgb(33, 37, 41);
 }
 
 .post.clicked {
