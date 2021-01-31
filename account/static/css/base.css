@@ -258,15 +258,17 @@ html, body {
 
 .post {
     margin-bottom: 1.5rem;
-    width: 30%;
+    width: 20%;
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 1.5rem;
     background: rgb(28, 30, 33);
+    transition: width 0.3s;
+    transition-timing-function: linear;
 }
 
 .post.clicked {
-    width: 50%;
+    width: 30%;
 }
 
 

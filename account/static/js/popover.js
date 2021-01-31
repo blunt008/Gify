@@ -3,7 +3,7 @@ const popoverProfile = document.getElementById("popover-profile");
 const avatarLink = document.getElementById("avatar-link");
 
 $(avatar).popover({
-  trigger: 'focus',
+  trigger: 'click',
     container: avatarLink,
     html: true,
     boundary: "viewport",

@@ -13,6 +13,7 @@
 {% block domready %}
     const container = document.getElementById("container");
     const csrfToken = Cookies.get("csrftoken");
+    const posts = document.querySelectorAll(".post");
 
     async function fetchPosts(page) {
         let response = await fetch(`/?page=${page}`, {
@@ -54,7 +55,14 @@
         })
     };
 
+    const zoomOnClick = (event) => {
+        event.currentTarget.classList.toggle("clicked");
+    };
 
     
+
+
+    
+    posts.forEach(post => post.addEventListener("click", zoomOnClick));
     enableInfiniteScroll();
 {% endblock %}

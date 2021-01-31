@@ -62,14 +62,6 @@ class MyPasswordChangeView(PasswordChangeView):
     """
     form_class = ChangePasswordForm
 
-@login_required
-def index(request: HttpRequest) -> HttpResponse:
-    """
-    Render dashboard.html page. Only for logged in users
-    """
-    return render(request,
-                  'account/dashboard.html',
-                  {'section': 'dashboard'})
 
 def register(request: HttpRequest) -> HttpResponse:
     """
@@ -125,7 +117,7 @@ def edit_profile(request: HttpRequest, name: str) -> HttpResponse:
     avatar_count = user_profile.avatars.count()
 
     if user_profile != request.user.profile:
-        return redirect("dashboard")
+        return redirect("index")
 
     if request.method == "POST":
         form = EditUserForm(request.POST, instance=user_profile)
