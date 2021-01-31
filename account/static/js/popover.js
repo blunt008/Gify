@@ -1,10 +1,9 @@
-const avatar = document.getElementById("avatar");
+const avatar = document.getElementById("avatar-link");
 const popoverProfile = document.getElementById("popover-profile");
-const avatarLink = document.getElementById("avatar-link");
 
 $(avatar).popover({
-  trigger: 'click',
-    container: avatarLink,
+  trigger: 'focus',
+    container: "body",
     html: true,
     boundary: "viewport",
     content: function() {
@@ -14,5 +13,6 @@ $(avatar).popover({
 
 avatar.addEventListener("click", (event) => {
     event.preventDefault();
+    console.log("clicked");
 })
 
