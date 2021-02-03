@@ -271,6 +271,10 @@ html, body {
     transform: scale(1.25);
 }
 
+.post:first-child {
+    margin-top: 7.5%;
+}
+
 
 @media only screen 
   and (min-device-width: 320px) 
