@@ -56,7 +56,9 @@
     };
 
     const zoomOnClick = (event) => {
+        const postBody = event.currentTarget.children[1];
         event.currentTarget.classList.toggle("clicked");
+        postBody.style.display = "none";
     };
 
     
