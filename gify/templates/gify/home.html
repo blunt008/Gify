@@ -55,16 +55,5 @@
         })
     };
 
-    const zoomOnClick = (event) => {
-        const postBody = event.currentTarget.children[1];
-        event.currentTarget.classList.toggle("clicked");
-        postBody.style.display = "none";
-    };
-
-    
-
-
-    
-    posts.forEach(post => post.addEventListener("click", zoomOnClick));
     enableInfiniteScroll();
 {% endblock %}
