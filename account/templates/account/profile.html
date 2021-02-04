@@ -21,7 +21,7 @@
                   {% endwith %}
                 <div class="interact-buttons">
                     {% if request.user.profile == user_profile %}
-                    <a id="editButton" class="btn btn-outline-primary" href="{% url 'edit_profile' user.username %}" role="button">Edit</a>
+                    <a class="btn authButton" href="{% url 'edit_profile' user.username %}" role="button">Edit</a>
                     {% else %}
                         <a class="btn btn-outline-primary" href="#" role="button">Message</a>
                         <a class="btn btn-outline-primary" href="#"
