@@ -83,7 +83,7 @@ const requestAvatars = (event) => {
         const profileID = event.target.dataset.id;
 
         // Fetch all avatars for the given user
-        fetch("/avatars/", {
+        fetch("/account/avatars/", {
             method: "POST",
             headers: {
                 "X-CSRFToken": csrfToken,
