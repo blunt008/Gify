@@ -231,6 +231,15 @@ p {
     font-size: 0.9rem;
 }
 
+#id_about {
+    background: rgb(228, 230, 235);
+}
+
+#id_about:focus {
+    outline: none !important;
+    border: 1px solid rgb(228, 230, 235);
+}
+
 #save-edit {
     display: flex;
     justify-content: flex-end;
