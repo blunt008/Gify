@@ -138,6 +138,11 @@ a:hover {
     padding: 0.5rem;
 }
 
+#profile__about-me h3 {
+    color: rgb(228, 230, 235);
+    margin-bottom: 1em;
+}
+
 #profile__about-avatar {
     text-align: center;
 }
