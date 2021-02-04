@@ -41,6 +41,10 @@ a:hover {
     padding-bottom: 1rem;
 }
 
+.title h1 {
+    color: rgb(228, 230, 235);
+}
+
 .login-form,
 .change-password-form,
 .register-form {
