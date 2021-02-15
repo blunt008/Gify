@@ -324,6 +324,12 @@ a:hover {
 }
 
 
+.post-buttons button:focus {
+	outline: none;
+	border: none;
+}
+
+
 
 
 
