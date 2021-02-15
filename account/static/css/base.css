@@ -297,24 +297,27 @@ a:hover {
     margin-top: 7.5%;
 }
 
+.card-body {
+	padding: 0.5em;
+}
+
 .post-buttons {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.comment_button {
-    width: 25%;
+.post-buttons button {
+	width: 25%;
     background: rgb(28, 30, 33);
     margin-right: 1em;
-    color: rgb(228, 230, 235);
     border: none;
     border-radius: 3px;
     padding: 0.3em;    
     transition: all 0.2s;
 }
 
-.comment_button:hover {
+.post-buttons button:hover {
     background: rgba(142, 142, 142, 0.33);
     color: black;
 }
