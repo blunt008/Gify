@@ -329,6 +329,46 @@ a:hover {
 	border: none;
 }
 
+.modal-post-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 2000 !important;
+	background-color: rgba(255, 255, 255, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.modal-post-container.show {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modal-create-post {
+	background: white;
+	width: 600px;
+	max-width: 100%;
+	padding: 30px 50px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+#close {
+	background-color: #47a386;
+	border: 0;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 14px;
+	padding: 10px 25px;
+}
 
 
 

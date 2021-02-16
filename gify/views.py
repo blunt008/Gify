@@ -4,6 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required 
 
 from .models import Post
+from .forms import PostCreateForm
 
 # Create your views here.
 
@@ -34,3 +35,23 @@ def index(request):
                   "gify/home.html",
                   {"section": "index", "posts": posts})
 
+
+@login_required
+def post_create(request):
+    """
+    View for handling post creation
+    """
+    if request.method == "POST":
+        # form is sent
+        form = PostCreateForm(data=request.POST)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            print(cleaned_data)
+    else:
+        form = PostCreateForm()
+
+    return render(
+        request,
+        "gify/create.html",
+        {"form": form}
+    )

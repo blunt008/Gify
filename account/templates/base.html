@@ -14,6 +14,13 @@
 {% block navbar %}
 {% endblock %}
     <div class="container-fluid" id="container">    
+		<div class="modal-post-container" id="modal_container">
+			<div class="modal-create-post">
+				<h1>Testing this modal</h1>
+				<p>Dummy text</p>
+				<button id="close">Close</button>
+			</div>
+		</div>
         {% block content %}
         {% endblock content %}
 
@@ -24,6 +31,7 @@
 <script src="{% static 'js/popover.js' %}"></script>
 <script src="{% static 'js/change_avatar.js' %}"></script>
 <script src="{% static 'js/show_comments.js' %}"></script>
+<script src="{% static 'js/toggle_modal.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 <script>
         {% block domready %}
