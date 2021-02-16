@@ -16,9 +16,13 @@
     <div class="container-fluid" id="container">    
 		<div class="modal-post-container" id="modal_container">
 			<div class="modal-create-post">
-				<h1>Testing this modal</h1>
-				<p>Dummy text</p>
-				<button id="close">Close</button>
+				<h1>Post new video!</h1>
+				<form id="new-post-form" method="POST">
+					{% csrf_token %}
+					<label for="link_url">Video URL:</label>
+					<input class="form-control" type="text" id="link_url" name="link">
+					<input type="submit" id="close" value="Add">
+				</form>
 			</div>
 		</div>
         {% block content %}
