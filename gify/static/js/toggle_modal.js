@@ -11,3 +11,12 @@ open.addEventListener("click", (event) => {
 close.addEventListener("click", () => {
 	modal_container.classList.remove("show");
 })
+
+
+const removeModal = (event) => {
+	if (event.target.classList.contains("modal-post-container")) {
+		modal_container.classList.remove("show");
+	}
+}
+
+window.addEventListener("click", (event) => removeModal(event));
