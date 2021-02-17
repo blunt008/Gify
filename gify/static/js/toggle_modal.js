@@ -9,11 +9,6 @@ open.addEventListener("click", (event) => {
 	modal_container.classList.add("show");
 })
 
-// close.addEventListener("click", () => {
-// 	modal_container.classList.remove("show");
-// })
-
-
 const removeModal = (event) => {
 	if (event.target.classList.contains("modal-post-container")) {
 		modal_container.classList.remove("show");
@@ -21,15 +16,6 @@ const removeModal = (event) => {
 }
 
 window.addEventListener("click", (event) => removeModal(event));
-
-// form.addEventListener("submit", (event) => {
-// 	const submittedForm = form;
-// 	console.log(submittedForm);
-// 	event.preventDefault();
-// 	const url = document.querySelector("#link_url").value;
-// 	console.log("Link submitted: ", url);
-// 	return;
-// })
 
 const url = document.getElementById("link_url");
 const urlerror = document.querySelector("#link_url + span.errorurl");
