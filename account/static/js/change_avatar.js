@@ -16,7 +16,7 @@ const updateAvatar = (url) => {
 const switchToDefaultAvatar = () => {
     // Once the last avatar is succesfully removed change main and navbar
     // avatars
-    const navAvatar = document.getElementById("avatar");
+    const navAvatar = document.getElementById("avatar-link");
 
     navAvatar.src = "/static/no-avatar.png";
     userAvatar.src = "/static/no-avatar.png";
@@ -28,7 +28,7 @@ const removeAvatar = (event, div, avatarCount) => {
     const csrfToken = getCookie("csrftoken");
     const avatarID = event.currentTarget.dataset.id;
     
-    fetch("/delete_avatar/", {
+    fetch("/account/delete_avatar/", {
         method: "POST",
         headers: {
             "X-CSRFToken": csrfToken,
@@ -195,7 +195,7 @@ if (saveBtn) {
         }
 
         if (avatarSelected) {
-            fetch("/change_avatar/", {
+            fetch("account/change_avatar/", {
                 method: "POST",
                 headers: {
                     "X-CSRFToken": csrfToken,
