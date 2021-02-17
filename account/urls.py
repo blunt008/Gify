@@ -28,12 +28,12 @@ urlpatterns = [
                      template_name="registration/password_reset_complete.html"
                  ),
                  name="password_reset_complete"),
+            path("change_avatar/", views.change_avatar, name="change_avatar"),
             path("profile/<str:name>/",
                  views.profile,
                  name="profile"),
             path("edit/profile/<str:name>/",
                  views.edit_profile, name="edit_profile"),
             path("avatars/", views.get_avatars, name="get_avatars"),
-            path("change_avatar/", views.change_avatar, name="change_avatar"),
             path("delete_avatar/", views.delete_avatar, name="delete_avatar"),
         ]

@@ -5,7 +5,7 @@ const closeModal = document.getElementById("close");
 
 const updateAvatar = (url) => {
     // Update both main and navbar avatar to the url received
-    const navAvatar = document.getElementById("avatar");
+    const navAvatar = document.getElementById("avatar-nav");
 
     navAvatar.src = url;
     userAvatar.src = url;
@@ -195,7 +195,7 @@ if (saveBtn) {
         }
 
         if (avatarSelected) {
-            fetch("account/change_avatar/", {
+            fetch("/account/change_avatar/", {
                 method: "POST",
                 headers: {
                     "X-CSRFToken": csrfToken,

@@ -25,7 +25,7 @@
           {% with avatar=request.user.profile.get_avatar %}
             <a role="button" id="avatar-link" class="nav-link" href="#"
                 data-bs-toggle="popover" tabindex="0">
-                <img src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
+                <img id="avatar-nav" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
             </a>
         {% endwith %}
         <div id="popover-profile" style="display: none;">

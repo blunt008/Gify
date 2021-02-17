@@ -193,7 +193,7 @@ def change_avatar(request: HttpRequest) -> HttpResponse:
         request.user.profile.change_avatar(avatar)
     except Avatar.DoesNotExist:
         avatar = None
-    
+
     if avatar:
         response = JsonResponse({
             "status": "ok",
