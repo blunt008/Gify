@@ -380,11 +380,28 @@ a:hover {
 	margin: 5px;
 }
 
-#new-post-form input[type="text"] {
-	width: 100%;
+/* #link_url:invalid { */
+/* 	border-color: #900; */
+/* } */
+
+#link_url:focus:invalid {
+	outline: none !important;
 }
 
+.errorurl {
+	width: 100%;
+	padding: 0;
+	font-size: 80%;
+	color: white;
+	background-color: #900;
+	border-radius: 0 0 5px 5px;
+}
 
+.errorurl.active {
+	padding: 0.3em;
+	background-color: #FDD;
+	color: red;
+}
 
 
 

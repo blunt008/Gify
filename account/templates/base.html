@@ -17,10 +17,11 @@
 		<div class="modal-post-container" id="modal_container">
 			<div class="modal-create-post">
 				<h1>Post new video!</h1>
-				<form id="new-post-form" method="POST">
+				<form id="new-post-form" method="POST" novalidate>
 					{% csrf_token %}
 					<label for="link_url">Video URL:</label>
-					<input class="form-control" type="text" id="link_url" name="link">
+					<input class="form-control" type="url" id="link_url" name="link" required>
+					<span class="errorurl" aria-live="polite"></span>
 					<input type="submit" id="close_modal" value="Add">
 				</form>
 			</div>

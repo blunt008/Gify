@@ -43,6 +43,7 @@ def post_create(request):
     """
     if request.method == "POST":
         # form is sent
+        print(request.POST)
         form = PostCreateForm(data=request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
