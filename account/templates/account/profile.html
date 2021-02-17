@@ -13,7 +13,7 @@
             <div id="profile__about-me">
                 <h3>{{ user.username }}</h3>
                 <p>About: {{ request.user.profile.about|default:"Missing" }}</p>
-                <p>Since: {{ request.user.profile.joined|date:"j/m/Y" }}</p>
+                <p>Joined: {{ request.user.profile.joined|date:"j/m/Y" }}</p>
             </div>
             <div id="profile__about-avatar">
                   {% with avatar=user_profile.get_avatar %}
