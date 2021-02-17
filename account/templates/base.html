@@ -20,7 +20,7 @@
 				<form id="new-post-form" method="POST" novalidate>
 					{% csrf_token %}
 					<label for="link_url">Video URL:</label>
-					<input class="form-control" type="url" id="link_url" name="link" required>
+					<input class="form-control" type="url" id="link_url" name="link" required pattern=".*(you|stream).*">
 					<span class="errorurl" aria-live="polite"></span>
 					<input type="submit" id="close_modal" value="Add">
 				</form>

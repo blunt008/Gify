@@ -42,7 +42,9 @@ const showError = () => {
 	if (url.validity.valueMissing) {
 		urlerror.textContent = "You need to enter video URL";
 	} else if (url.validity.typeMismatch) {
-		urlerror.textContent = "Entered value needs to be an URL";
+		urlerror.textContent = "Cannot detect valid URL";
+	} else if (url.validity.patternMismatch) {
+		urlerror.textContent = "Only youtube and streamable links are currently supported";
 	}
 	urlerror.className = "errorurl active";
 }
