@@ -9,10 +9,12 @@ const urlerror = document.querySelector("#link_url + span.errorurl");
 /*
  * Open modal on click event
  */
-open.addEventListener("click", (event) => {
-	event.preventDefault();
-	modal_container.classList.add("show");
-})
+if (open) {
+	open.addEventListener("click", (event) => {
+		event.preventDefault();
+		modal_container.classList.add("show");
+	})
+}
 
 
 /*

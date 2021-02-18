@@ -46,6 +46,8 @@ def post_create(request):
         form = PostCreateForm(data=request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
+            link = cleaned_data.get("link", "")
+            print(link)
         else:
             return JsonResponse({
                 "status": "error",
