@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required 
 
@@ -43,11 +43,14 @@ def post_create(request):
     """
     if request.method == "POST":
         # form is sent
-        print(request.POST)
         form = PostCreateForm(data=request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            print(cleaned_data)
+        else:
+            return JsonResponse({
+                "status": "error",
+                "errors": form.errors.as_json()
+            }, safe=False, status=422)
     else:
         form = PostCreateForm()
 
