@@ -13,6 +13,5 @@ $(avatar).popover({
 
 avatar.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log("clicked");
 })
 
