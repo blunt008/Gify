@@ -10,12 +10,18 @@ class PostCreateForm(forms.ModelForm):
         model = Post
         fields = ("link",)
 
-    def clean_url(self):
+    def clean_link(self):
         """
-        Check if the link provided links
-        to streamable or youtube. In such case
-        transform it into 'embedded' version and
-        if not show error
+        Check if the link provided points
+        to streamable or youtube and raise validation errors
+        if it doesn't
         """
-        url = self.cleaned_data["url"]
-        print(url)
+        link = self.cleaned_data.get("link", "");
+        print(link)
+        if "you" not in link and "stream" not in link:
+            print("error")
+            raise forms.ValidationError(("We only accept URLs to YouTube"
+                                         " or Streamable"))
+
+        return link
+
