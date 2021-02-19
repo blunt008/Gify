@@ -47,7 +47,6 @@ def post_create(request):
         form = PostCreateForm(data=request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            link = cleaned_data.get("link", "")
             user_profile = request.user.profile
             new_post = form.save(commit=False)
             new_post.profile = user_profile
