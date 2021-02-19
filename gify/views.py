@@ -53,7 +53,7 @@ def post_create(request):
             new_post.save()
             return JsonResponse({
                 "status": "ok",
-                "redirectLocation": "/"
+                "link": new_post.link
             }, status=201)
         else:
             return JsonResponse({
