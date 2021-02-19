@@ -210,7 +210,7 @@ def change_avatar(request: HttpRequest) -> HttpResponse:
 
 @login_required
 @require_POST
-def delete_avatar(request: HttpRequest) -> HttpResponse:
+def delete_avatar(request):
     """
     Handle AJAX requests requesting avatar deletion
     """
