@@ -12,6 +12,7 @@ const urlerror = document.querySelector("#link_url + span.errorurl");
 if (open) {
 	open.addEventListener("click", (event) => {
 		event.preventDefault();
+		url.value = "";
 		modal_container.classList.add("show");
 	})
 }
