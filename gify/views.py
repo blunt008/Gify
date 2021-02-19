@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required 
 
 from .models import Post
 from .forms import PostCreateForm
+
 
 # Create your views here.
 
@@ -47,7 +48,14 @@ def post_create(request):
         if form.is_valid():
             cleaned_data = form.cleaned_data
             link = cleaned_data.get("link", "")
-            print(link)
+            user_profile = request.user.profile
+            new_post = form.save(commit=False)
+            new_post.profile = user_profile
+            new_post.save()
+            return JsonResponse({
+                "status": "ok",
+                "redirectLocation": "/"
+            }, status=201)
         else:
             return JsonResponse({
                 "status": "error",

@@ -91,8 +91,10 @@ const uploadURL = async () => {
 		const errorArray = handleFormErrors(responseJson);
 		displayErrorsOnForm(errorArray);
 	}
-	
-	return response;
+
+	if (responseJson.status == "ok") {
+		redirectOnSuccess(responseJson);
+	}
 }
 
 
@@ -120,6 +122,12 @@ const displayErrorsOnForm = (errorArray) => {
 	for (const message of errorArray) {
 		urlerror.textContent = message;
 	}
+}
+
+
+const redirectOnSuccess = (responseJson) => {
+	const redirectLocation = responseJson.redirectLocation;
+	window,location.href = redirectLocation;
 }
 
 
