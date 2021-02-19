@@ -21,10 +21,8 @@ if (open) {
  * Function handling modal removal.
  * If click was registered outside modal container close modal
  */
-const removeModal = (event) => {
-	if (event.target.classList.contains("modal-post-container")) {
-		modal_container.classList.remove("show");
-	}
+const removeModal = () => {
+	modal_container.classList.remove("show");
 }
 
 
@@ -86,14 +84,17 @@ const uploadURL = async () => {
 			"link": link
 		}),
 	})
-	const responseJson = await response.json()
-	if (responseJson.status == "error") {
+
+	if (!response.ok) {
+		const responseJson = await response.json();
 		const errorArray = handleFormErrors(responseJson);
 		displayErrorsOnForm(errorArray);
 	}
 
-	if (responseJson.status == "ok") {
-		redirectOnSuccess(responseJson);
+	if (response.ok) {
+		responseJson = await response.json()
+		createPostTemplate(responseJson.link);
+		removeModal();
 	}
 }
 
@@ -125,10 +126,44 @@ const displayErrorsOnForm = (errorArray) => {
 }
 
 
-const redirectOnSuccess = (responseJson) => {
-	const redirectLocation = responseJson.redirectLocation;
-	window,location.href = redirectLocation;
+const createPostTemplate = (link) => {
+    const container = document.getElementById("container");
+	const postContainer = document.createElement("div");
+	const iframeContainer = document.createElement("div");
+	const iframe = document.createElement("iframe");
+	const cardBody = document.createElement("div");
+	const postButtons = document.createElement("div");
+	const buttonComment = document.createElement("button");
+	const buttonLike = document.createElement("button");
+
+	postContainer.className = "card post";
+	iframeContainer.className = "embed-responsive embed-responsive-16by9";
+	cardBody.className = "card-body";
+	postButtons.className = "post-buttons";
+	buttonComment.className = "comment_button";
+
+	buttonComment.innerHTML = "Comment";
+	buttonLike.innerHTML = "Like";
+
+	postButtons.appendChild(buttonComment);
+	postButtons.appendChild(buttonLike);
+
+	cardBody.appendChild(postButtons);
+
+	iframe.src = link;
+
+	iframeContainer.appendChild(iframe);
+
+	postContainer.appendChild(iframeContainer);
+	postContainer.appendChild(cardBody);
+
+	container.appendChild(postContainer);
 }
 
 
-window.addEventListener("click", (event) => removeModal(event));
+window.addEventListener("click", (event) => {
+	if (event.target.classList.contains("modal-post-container")) {
+		removeModal();
+	}
+});
+
