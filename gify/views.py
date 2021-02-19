@@ -13,7 +13,7 @@ from .forms import PostCreateForm
 @login_required
 def index(request):
     """
-    Index page
+    GIFy homepage
     """
     posts = Post.objects.all()
     paginator = Paginator(posts, 3)
