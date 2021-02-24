@@ -122,7 +122,7 @@ a:hover {
 }
 
 #avatar-nav,
-#avatar-new-comment {
+.avatar-new-comment {
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -412,7 +412,7 @@ a:hover {
 	justify-content: space-between;
 }
 
-#new-comment-input {
+.new-comment-input {
 	width: 90%;
 	padding: 0.5em;
 	font-size: 14px;
@@ -420,6 +420,6 @@ a:hover {
 	border-radius: 5px;
 }
 
-#new-comment-input:focus {
+.new-comment-input:focus {
 	outline: none;
 }

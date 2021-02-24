@@ -12,9 +12,9 @@
 	</div>
 	<div class="add-new-post">
 		<div>
-			<img id="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
+			<img class="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
 		</div>
-		<input id="new-comment-input" type="text" placeholder="Add comment...">
+		<input class="new-comment-input" type="text" placeholder="Add comment...">
 	</div>
 </div>
 {% endfor %}
