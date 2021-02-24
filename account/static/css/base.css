@@ -121,7 +121,8 @@ a:hover {
     text-decoration: none;
 }
 
-#avatar-link img {
+#avatar-nav,
+#avatar-new-comment {
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -402,5 +403,12 @@ a:hover {
 	padding: 0.3em;
 	background-color: #FDD;
 	color: #653131;
+}
+
+
+.add-new-post {
+	background: red;
+	padding: 0.5em;
+	display: flex;
 }
 
