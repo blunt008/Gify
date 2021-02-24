@@ -1,6 +1,7 @@
-const template = document.getElementById('add-comment');
-
-
+/*
+ * Check if 'comment' button was clicked and 
+ * display all comments for a given post
+ */
 document.body.addEventListener('click', event => {
 	if (event.srcElement.className === 'comment_button') {
 		const postDiv = getPostDiv(event.target);
