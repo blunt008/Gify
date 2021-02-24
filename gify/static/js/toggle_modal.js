@@ -94,7 +94,7 @@ const uploadURL = async () => {
 
 	if (response.ok) {
 		responseJson = await response.json()
-		createPostTemplate(responseJson.link);
+		createPost(responseJson.link);
 		removeModal();
 	}
 }
@@ -127,38 +127,15 @@ const displayErrorsOnForm = (errorArray) => {
 }
 
 
-const createPostTemplate = (link) => {
+const createPost = (link) => {
     const container = document.getElementById("container");
-	const postContainer = document.createElement("div");
-	const iframeContainer = document.createElement("div");
-	const iframe = document.createElement("iframe");
-	const cardBody = document.createElement("div");
-	const postButtons = document.createElement("div");
-	const buttonComment = document.createElement("button");
-	const buttonLike = document.createElement("button");
-
-	postContainer.className = "card post";
-	iframeContainer.className = "embed-responsive embed-responsive-16by9";
-	cardBody.className = "card-body";
-	postButtons.className = "post-buttons";
-	buttonComment.className = "comment_button";
-
-	buttonComment.innerHTML = "Comment";
-	buttonLike.innerHTML = "Like";
-
-	postButtons.appendChild(buttonComment);
-	postButtons.appendChild(buttonLike);
-
-	cardBody.appendChild(postButtons);
+	const postTemplate = document.getElementById("post-template");
+	const content = document.importNode(postTemplate.content, true);
+	const iframe = content.querySelector("iframe");
 
 	iframe.src = link;
 
-	iframeContainer.appendChild(iframe);
-
-	postContainer.appendChild(iframeContainer);
-	postContainer.appendChild(cardBody);
-
-	container.appendChild(postContainer);
+	container.appendChild(content);
 }
 
 
