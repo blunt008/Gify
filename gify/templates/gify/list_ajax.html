@@ -1,3 +1,4 @@
+{% load thumbnail %}
 {% for post in posts %}
 <div class="card post">
 <div class="embed-responsive embed-responsive-16by9">
@@ -8,6 +9,12 @@
 			<button class="comment_button">Comment</button>
 			<button>Like</button>
 		</div>
+	</div>
+	<div class="add-new-post">
+		<div>
+			<img id="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
+		</div>
+		<input type="text" placeholder="Add comment...">
 	</div>
 </div>
 {% endfor %}
