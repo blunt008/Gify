@@ -418,3 +418,6 @@ a:hover {
 	font-size: 14px;
 }
 
+#new-comment-input:focus {
+	outline: none;
+}
