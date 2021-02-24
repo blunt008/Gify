@@ -14,7 +14,7 @@
 		<div>
 			<img id="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
 		</div>
-		<input type="text" placeholder="Add comment...">
+		<input id="new-comment-input" type="text" placeholder="Add comment...">
 	</div>
 </div>
 {% endfor %}
