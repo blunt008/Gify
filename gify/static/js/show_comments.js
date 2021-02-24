@@ -6,6 +6,12 @@ document.body.addEventListener('click', event => {
 	if (event.srcElement.className === 'comment_button') {
 		const postDiv = getPostDiv(event.target);
 		console.log(postDiv);
+
+		const addComment = postDiv.querySelector('.add-new-post');
+		addComment.style.display = 'flex';
+		addComment.style.animationPlayState = 'running';
+		console.log(addComment);
+
 	}
 })
 
