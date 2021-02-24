@@ -132,10 +132,16 @@ const createPost = (link) => {
 	const postTemplate = document.getElementById("post-template");
 	const content = document.importNode(postTemplate.content, true);
 	const iframe = content.querySelector("iframe");
+	const posts = document.querySelectorAll(".post");
+
 
 	iframe.src = link;
 
-	container.appendChild(content);
+	if (posts.length > 0) {
+		container.insertBefore(content, posts[0]);
+	} else {
+		container.appendChild(content);
+	}
 }
 
 
