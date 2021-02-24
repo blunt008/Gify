@@ -407,8 +407,14 @@ a:hover {
 
 
 .add-new-post {
-	background: red;
 	padding: 0.5em;
 	display: flex;
+	justify-content: space-between;
+}
+
+#new-comment-input {
+	width: 90%;
+	padding: 0.5em;
+	font-size: 14px;
 }
 
