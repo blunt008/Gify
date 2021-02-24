@@ -136,6 +136,7 @@ const createPost = (link) => {
 
 
 	iframe.src = link;
+	iframe.setAttribute('allowfullscreen', true);
 
 	if (posts.length > 0) {
 		container.insertBefore(content, posts[0]);
