@@ -3,7 +3,6 @@ const template = document.getElementById('add-comment');
 
 document.body.addEventListener('click', event => {
 	if (event.srcElement.className === 'comment_button') {
-		const clone = document.importNode(template.content, true);
 		const postDiv = getPostDiv(event.target);
 		console.log(postDiv);
 	}
