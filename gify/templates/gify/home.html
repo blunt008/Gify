@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block title %}GIFy{% endblock %}
 
@@ -18,8 +19,11 @@
 			<button>Like</button>
 		</div>
 	</div>
-	<div class="">
-		<input type="text" placeholder="Add comment...">
+	<div class="add-new-post">
+		<div>
+			<img class="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
+		</div>
+		<input class="new-comment-input" type="text" placeholder="Another comment...">
 	</div>
 	</div>
 </template>

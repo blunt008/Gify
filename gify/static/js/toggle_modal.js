@@ -134,7 +134,6 @@ const createPost = (link) => {
 	const iframe = content.querySelector("iframe");
 	const posts = document.querySelectorAll(".post");
 
-
 	iframe.src = link;
 	iframe.setAttribute('allowfullscreen', true);
 
