@@ -5,10 +5,17 @@
 document.body.addEventListener('click', event => {
 	if (event.srcElement.className === 'comment_button') {
 		const postDiv = getPostDiv(event.target);
-
 		const addComment = postDiv.querySelector('.add-new-post');
-		addComment.style.display = 'flex';
-		addComment.style.animationPlayState = 'running';
+		const COMMENT_DISPLAYED = 'showcomment';
+		const HIDE_COMMENT = 'hideComment';
+
+		if (addComment.style.animationName == COMMENT_DISPLAYED) {
+			addComment.classList.toggle(HIDE_COMMENT);
+		} else {
+			addComment.style.animationName = COMMENT_DISPLAYED;
+			addComment.style.animationPlayState = 'running';
+		}
+
 
 	}
 })
