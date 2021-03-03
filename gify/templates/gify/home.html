@@ -68,7 +68,7 @@
                     if (response.length == 0) {
                         block_request = true;
                     } else {
-                        container.innerHTML += response;
+					    container.insertAdjacentHTML('beforeend', response);
                         block_request = false;
                     }
                 })
