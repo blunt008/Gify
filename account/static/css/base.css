@@ -425,13 +425,13 @@ a:hover {
 	justify-content: space-between;
 	height: 0;
 	opacity: 0;
-	animation-name: showcomment;
+	/* animation-name: showcomment; */
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 	animation-play-state: paused;
 }
 
-.add-new-post.hiddenComment {
+.add-new-post.hideComment {
 	display: none;
 	height: 0;
 	opacity: 0;
