@@ -5,12 +5,10 @@
 document.body.addEventListener('click', event => {
 	if (event.srcElement.className === 'comment_button') {
 		const postDiv = getPostDiv(event.target);
-		console.log(postDiv);
 
 		const addComment = postDiv.querySelector('.add-new-post');
 		addComment.style.display = 'flex';
 		addComment.style.animationPlayState = 'running';
-		console.log(addComment);
 
 	}
 })
@@ -21,7 +19,6 @@ document.body.addEventListener('click', event => {
  * and returns its parent 'post' div
  */
 const getPostDiv = (element) => {
-	// Search for parent post div up to 'height' elements in DOM
 	let height = 4;
 	while (height > 0) {
 		element = element.parentNode;
