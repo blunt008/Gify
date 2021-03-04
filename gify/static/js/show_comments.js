@@ -6,13 +6,13 @@ document.body.addEventListener('click', event => {
 	if (event.srcElement.className === 'comment_button') {
 		const postDiv = getPostDiv(event.target);
 		const addComment = postDiv.querySelector('.add-new-post');
-		const COMMENT_DISPLAYED = 'showcomment';
+		const SHOW_COMMENT = 'showcomment';
 		const HIDE_COMMENT = 'hideComment';
 
-		if (addComment.style.animationName == COMMENT_DISPLAYED) {
+		if (addComment.style.animationName == SHOW_COMMENT) {
 			addComment.classList.toggle(HIDE_COMMENT);
 		} else {
-			addComment.style.animationName = COMMENT_DISPLAYED;
+			addComment.style.animationName = SHOW_COMMENT;
 			addComment.style.animationPlayState = 'running';
 		}
 
