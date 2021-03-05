@@ -32,3 +32,6 @@ class Comment(models.Model):
         on_delete=models.CASCADE
     )
     text = models.CharField(max_length=250)
+
+    def __str__(self):
+        return f'{self.text}'
