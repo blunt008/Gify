@@ -53,7 +53,8 @@ def post_create(request):
             new_post.save()
             return JsonResponse({
                 "status": "ok",
-                "link": new_post.link
+                "link": new_post.link,
+                'id': new_post.id
             }, status=201)
         else:
             return JsonResponse({
