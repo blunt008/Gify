@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required 
 
-from .models import Post
+from .models import Post, Comment
 from .forms import PostCreateForm
 
 
@@ -68,3 +68,17 @@ def post_create(request):
         "gify/create.html",
         {"form": form}
     )
+
+
+def retrieve_comments(request):
+    """
+    View function to handle Ajax requests for 
+    retrieving comments under post
+    """
+    post_id = request.GET.get('post', 0)
+    post = get_object_or_404(Post, id=post_id)
+    comments = post.comments.all()
+
+    return render(request,
+                  'gify/list_comment_ajax.html',
+                  {'comments': comments})
