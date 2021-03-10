@@ -1,6 +1,6 @@
 {% load thumbnail %}
 {% for post in posts %}
-<div class="card post">
+<div class="card post" data-id="{{ post.id }}">
 <div class="embed-responsive embed-responsive-16by9">
 	<iframe src="{{ post.link }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 </div>
