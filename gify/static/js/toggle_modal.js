@@ -94,7 +94,7 @@ const uploadURL = async () => {
 
 	if (response.ok) {
 		responseJson = await response.json()
-		createPost(responseJson.link);
+		createPost(responseJson.link, responseJson.id);
 		removeModal();
 	}
 }
@@ -127,15 +127,18 @@ const displayErrorsOnForm = (errorArray) => {
 }
 
 
-const createPost = (link) => {
+const createPost = (link, id) => {
     const container = document.getElementById("container");
 	const postTemplate = document.getElementById("post-template");
 	const content = document.importNode(postTemplate.content, true);
 	const iframe = content.querySelector("iframe");
+	const post = content.querySelector('.post');
 	const posts = document.querySelectorAll(".post");
 
 	iframe.src = link;
 	iframe.setAttribute('allowfullscreen', true);
+
+	post.dataset.id = id;
 
 	if (posts.length > 0) {
 		container.insertBefore(content, posts[0]);
