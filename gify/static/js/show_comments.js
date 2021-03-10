@@ -7,14 +7,11 @@ document.body.addEventListener('click', event => {
 		const postDiv = getPostDiv(event.target);
 		const addComment = postDiv.querySelector('.add-new-post');
 		const SHOW_COMMENT = 'showcomment';
-		const HIDE_COMMENT = 'hideComment';
+		const comments = document.querySelector('.posts-container');
 
-		if (addComment.style.animationName == SHOW_COMMENT) {
-			addComment.classList.toggle(HIDE_COMMENT);
-		} else {
-			addComment.style.animationName = SHOW_COMMENT;
-			addComment.style.animationPlayState = 'running';
-		}
+		addComment.style.animationName = SHOW_COMMENT;
+		addComment.style.animationPlayState = 'running';
+		comments.classList.add('showComments');
 
 
 	}
