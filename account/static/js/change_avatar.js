@@ -3,8 +3,11 @@ const saveBtn = document.getElementById("save");
 const closeModal = document.getElementById("close");
 
 
+/*
+ * Update main and navbar avatars to the URL
+ * received
+ */
 const updateAvatar = (url) => {
-    // Update both main and navbar avatar to the url received
     const navAvatar = document.getElementById("avatar-nav");
 
     navAvatar.src = url;
@@ -13,9 +16,11 @@ const updateAvatar = (url) => {
     closeModal.click();
 }
 
+
+/*
+ * Change user's avatar to default one (no avatar)
+ */
 const switchToDefaultAvatar = () => {
-    // Once the last avatar is succesfully removed change main and navbar
-    // avatars
     const navAvatar = document.getElementById("avatar-link");
 
     navAvatar.src = "/static/no-avatar.png";
@@ -24,6 +29,10 @@ const switchToDefaultAvatar = () => {
     userAvatar.removeEventListener("click", requestAvatars);
 }
 
+
+/*
+ * Delete avatar
+ */
 const removeAvatar = (event, div, avatarCount) => {
     const csrfToken = getCookie("csrftoken");
     const avatarID = event.currentTarget.dataset.id;
@@ -62,6 +71,10 @@ const removeAvatar = (event, div, avatarCount) => {
     })
 }
 
+
+/*
+ * Retrieve csrfToken
+ */
 const getCookie = (name) => {
             let cookieValue = null;
             if (document.cookie && document.cookie !== '') {
@@ -78,6 +91,10 @@ const getCookie = (name) => {
             return cookieValue;
         };
 
+
+/*
+ * Retrieve all available avatars available for user
+ */
 const requestAvatars = (event) => {
         const csrfToken = getCookie("csrftoken");
         const profileID = event.target.dataset.id;
@@ -109,7 +126,9 @@ const requestAvatars = (event) => {
 }
 
 
-
+/*
+ * Display all available avatars
+ */
 const displayAvatars = (avatars) => {
     const modal = document.querySelector(".modal-body");
     const avatarCount = avatars.length;
@@ -149,6 +168,10 @@ const displayAvatars = (avatars) => {
     }
 }
 
+
+/*
+ * Select clicked avatar
+ */
 const selectAvatar = (event) => {
     const avatars = document.querySelectorAll(".avatar-preview-container");
     const clickedTarget = event.currentTarget;
