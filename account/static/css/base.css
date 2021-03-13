@@ -409,10 +409,13 @@ a:hover {
 	color: #653131;
 }
 
-
+.new-comment-form {
+	width: 100%;
+	text-align: center;
+}
 
 .new-comment-input {
-	width: 90%;
+	width: 95%;
 	padding: 0.5em;
 	font-size: 14px;
 	background: rgb(228, 230, 235);

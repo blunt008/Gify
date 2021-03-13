@@ -16,7 +16,9 @@
 			<img class="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
 			</a>
 		</div>
-		<input class="new-comment-input" type="text" placeholder="Add comment...">
+		<form class="new-comment-form" method="POST" novalidate>
+			<input class="new-comment-input" type="text" placeholder="Add comment...">
+		</form>
 	</div>
 <div class="comments-container"> </div>
 </div>
