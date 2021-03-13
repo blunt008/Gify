@@ -26,6 +26,7 @@ class Comment(models.Model):
         related_name='comments',
         on_delete=models.CASCADE
     )
+    created = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
 
     def __str__(self):
