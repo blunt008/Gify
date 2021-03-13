@@ -131,7 +131,7 @@ const displayErrorsOnForm = (errorArray) => {
  * Create post
  */
 const createPost = (link, id) => {
-    const container = document.getElementById("container");
+	const container = document.getElementById("container");
 	const postTemplate = document.getElementById("post-template");
 	const content = document.importNode(postTemplate.content, true);
 	const iframe = content.querySelector("iframe");
