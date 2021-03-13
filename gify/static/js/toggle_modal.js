@@ -127,6 +127,9 @@ const displayErrorsOnForm = (errorArray) => {
 }
 
 
+/*
+ * Create post
+ */
 const createPost = (link, id) => {
     const container = document.getElementById("container");
 	const postTemplate = document.getElementById("post-template");
@@ -145,12 +148,87 @@ const createPost = (link, id) => {
 	} else {
 		container.appendChild(content);
 	}
+
+	addEventListenerToComment();
 }
 
 
+/*
+ * Remove modal on click event inside modal container
+ */
 window.addEventListener("click", (event) => {
 	if (event.target.classList.contains("modal-post-container")) {
 		removeModal();
 	}
 });
 
+
+/*
+ * Attach event listener to each comment button
+ */
+const addEventListenerToComment = () => {
+	const comments = document.querySelectorAll('.comment_button');
+	comments.forEach(comment => addEventListener('click', enableComments));
+}
+
+
+/*
+ * Show new comment input and post comments
+ */
+const enableComments = (event) => {
+	const postDiv = getPostDiv(event.target);
+	
+	displayCommentInput(postDiv);
+	displayPostComments(postDiv);
+}
+
+
+/*
+ * Retrieve and display comments
+ */
+const displayPostComments = async (postDiv) => {
+	const postID = postDiv.dataset.id;
+	const postsContainer = postDiv.querySelector('.comments-container');
+	const csrfToken = getCookie('csrftoken');
+
+	const response = await fetch(`/get_comments?post=${postID}`, {
+		method: 'GET',
+		headers: {
+			'X-CSRFToken': csrfToken,
+		},
+	})
+
+	const responseText = await response.text();
+
+	postsContainer.insertAdjacentHTML('afterbegin', responseText);
+}
+
+
+/*
+ * Display new comment input for a given post
+ */
+const displayCommentInput = (postDiv) => {
+	const addComment = postDiv.querySelector('.add-new-post');
+
+	addComment.style.animationName = 'showcomment';
+	addComment.style.animationPlayState = 'running';
+}
+
+
+/*
+ * Receives clicked on button
+ * and returns its parent 'post' div
+ */
+const getPostDiv = (element) => {
+	let height = 4;
+	while (height > 0) {
+		element = element.parentNode;
+		if (element.className.includes('card post')) {
+			return element;
+		}
+		height--;	
+	}
+}
+
+
+addEventListenerToComment();
