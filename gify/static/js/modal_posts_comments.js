@@ -168,7 +168,7 @@ window.addEventListener("click", (event) => {
  */
 const addEventListenerToComment = () => {
 	const comments = document.querySelectorAll('.comment_button');
-	comments.forEach(comment => addEventListener('click', enableComments));
+	comments.forEach(comment => comment.addEventListener('click', enableComments));
 }
 
 
@@ -178,8 +178,10 @@ const addEventListenerToComment = () => {
 const enableComments = (event) => {
 	const postDiv = getPostDiv(event.target);
 	
+	console.log('clicked', event.target);
 	displayCommentInput(postDiv);
 	displayPostComments(postDiv);
+	removeClickEvent(postDiv);
 }
 
 
@@ -216,7 +218,7 @@ const displayCommentInput = (postDiv) => {
 
 
 /*
- * Receives clicked on button
+ * Receives clicked button
  * and returns its parent 'post' div
  */
 const getPostDiv = (element) => {
@@ -231,4 +233,13 @@ const getPostDiv = (element) => {
 }
 
 
-addEventListenerToComment();
+/*
+ * Remove 'click' event listener from comment button
+ */
+const removeClickEvent = (postDiv) => {
+	const commentButton = postDiv.querySelector('.comment_button');
+	commentButton.removeEventListener('click', enableComments);
+}
+
+
+window.addEventListener('DOMContentLoaded', addEventListenerToComment);
