@@ -178,7 +178,6 @@ const addEventListenerToComment = () => {
 const enableComments = (event) => {
 	const postDiv = getPostDiv(event.target);
 	
-	console.log('clicked', event.target);
 	displayCommentInput(postDiv);
 	displayPostComments(postDiv);
 	removeClickEvent(postDiv);
