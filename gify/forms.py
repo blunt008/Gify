@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 
 
 class PostCreateForm(forms.ModelForm):
@@ -48,3 +48,9 @@ class PostCreateForm(forms.ModelForm):
         link_id = url.split("/")[-1]
 
         return STREAMABLE_EMBED_URL + link_id
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)
