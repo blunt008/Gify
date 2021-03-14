@@ -27,7 +27,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE
     )
     created = models.DateTimeField(auto_now_add=True)
-    body = models.TextField()
+    body = models.CharField(max_length=250)
 
     def __str__(self):
         return f'{self.text}'
