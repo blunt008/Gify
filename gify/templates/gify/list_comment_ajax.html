@@ -1,7 +1,7 @@
 {% for comment in comments %}
 	<div class="post-comment">
 		<div class="post-author">
-			<p>Damian2 at 20/01/2021:</p>
+			<p>Damian2 at {{ comment.created }}</p>
 		</div>
 			<div>
 				<p>{{ comment.body }}</p>
