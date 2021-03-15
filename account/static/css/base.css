@@ -500,3 +500,12 @@ a:hover {
 .posts-container.showComments {
 	display: block;
 }
+
+.post-author p {
+	color: rgb(176, 179, 184);
+}
+
+.comment-date {
+	font-size: 0.8em;
+}
+
