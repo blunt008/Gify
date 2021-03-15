@@ -177,10 +177,13 @@ const addEventListenerToComment = () => {
  */
 const enableComments = (event) => {
 	const postDiv = getPostDiv(event.target);
+	const commentForm = postDiv.querySelector('.new-comment-form');
 	
 	displayCommentInput(postDiv);
 	displayPostComments(postDiv);
 	removeClickEvent(postDiv);
+	
+	commentForm.addEventListener('submit', addNewComment);
 }
 
 
@@ -238,6 +241,37 @@ const getPostDiv = (element) => {
 const removeClickEvent = (postDiv) => {
 	const commentButton = postDiv.querySelector('.comment_button');
 	commentButton.removeEventListener('click', enableComments);
+}
+
+
+const addNewComment = async (event) => {
+	event.preventDefault();
+	const csrfToken = getCookie('csrftoken');
+	const commentInput = event.target.querySelector('.new-comment-input');
+	const commentBody = commentInput.value;
+
+	const response = await fetch('comment/add/', {
+		method: 'POST',
+		headers: {
+			'X-CSRFToken': csrfToken,
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		body: new URLSearchParams({
+			'body': commentBody
+		})
+	})
+
+	if (!response.ok) {
+		handleCommentFormErrors(commentInput);
+	}
+}
+
+
+const handleCommentFormErrors = (commentInput) => {
+	commentInput.classList.toggle('new-comment-error');
+	setTimeout(() => {
+		commentInput.classList.toggle('new-comment-error');
+	}, 1500)
 }
 
 
