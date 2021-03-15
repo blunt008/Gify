@@ -30,4 +30,4 @@ class Comment(models.Model):
     body = models.CharField(max_length=250)
 
     def __str__(self):
-        return f'{self.text}'
+        return f'{self.body}'
