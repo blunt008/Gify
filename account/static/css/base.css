@@ -1,3 +1,7 @@
+* {
+	cursor: default;
+}
+
 html, body {
      font-family: 'Lato', sans-serif;
      background-color: rgb(13, 13, 14);
@@ -129,6 +133,11 @@ a:hover {
     border-radius: 50%;
     height: 40px;
     width: 40px;
+	cursor: pointer;
+}
+
+#open {
+	cursor: pointer;
 }
 
 
@@ -318,7 +327,7 @@ a:hover {
     margin-right: 1em;
     border: none;
     border-radius: 3px;
-    padding: 0.3em;    
+    padding: 0.5em;    
     transition: all 0.2s;
 	color: rgb(176, 179, 184);
 	font-size: 0.8em;
@@ -326,6 +335,7 @@ a:hover {
 
 .post-buttons button:hover {
     background: rgba(142, 142, 142, 0.33);
+	cursor: pointer;
 }
 
 
