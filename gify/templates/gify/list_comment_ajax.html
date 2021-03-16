@@ -4,7 +4,7 @@
 			<p>{{ comment.author }} <span class="comment-date">{{ comment.created|date:"F d, Y," }}{{ comment.created|time:" g:i A" }}</span></p>
 		</div>
 			<div>
-				<p>{{ comment.body }}</p>
+				<p class="comment-body">{{ comment.body }}</p>
 			</div>
 	</div>
 {% endfor %}
