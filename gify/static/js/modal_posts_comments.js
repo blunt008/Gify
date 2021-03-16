@@ -268,17 +268,18 @@ const addNewComment = async (event) => {
 		handleCommentFormErrors(commentInput);
 	} else if (response.ok) {
 		const responseJson = await response.json();
-		handleCommentFormValid(responseJson);
+		handleCommentFormValid(responseJson, commentInput);
 	}
 }
 
 
-const handleCommentFormValid = (response) => {
+const handleCommentFormValid = (response, input) => {
 	const comment = response.comment
 	const created = getLocalDate(comment.created);
 	const author = comment.author;
 	const body = comment.body;
 
+	input.value = '';
 	addCommentToPost(author, created, body);
 };
 
