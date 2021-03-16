@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 from .models import Post, Comment
-from .forms import PostCreateForm
-
-
-# Create your views here.
+from .forms import PostCreateForm, CommentForm
 
 
 @login_required
@@ -83,3 +81,22 @@ def retrieve_comments(request):
     return render(request,
                   'gify/list_comment_ajax.html',
                   {'comments': comments})
+
+
+@require_POST
+def add_comment(request):
+    post_id = request.POST.get('post_id', None)
+    post = get_object_or_404(Post, id=post_id)
+    comment_form = CommentForm(data=request.POST)
+    if comment_form.is_valid():
+        new_comment = comment_form.save(commit=False)
+        new_comment.post = post
+        new_comment.save()
+        return JsonResponse({'comment': {
+            'author': request.user.username,
+            'body': new_comment.body,
+            'created': new_comment.created
+        }}, status=201)
+    else:
+        errors = comment_form.errors.get_json_data(escape_html=True)
+        return JsonResponse(errors, status=422)
