@@ -249,6 +249,8 @@ const addNewComment = async (event) => {
 	const csrfToken = getCookie('csrftoken');
 	const commentInput = event.target.querySelector('.new-comment-input');
 	const commentBody = commentInput.value;
+	const postDiv = getPostDiv(event.target);
+	const postID = postDiv.dataset.id;
 
 	const response = await fetch('comment/add/', {
 		method: 'POST',
@@ -257,16 +259,64 @@ const addNewComment = async (event) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		body: new URLSearchParams({
-			'body': commentBody
+			'body': commentBody,
+			'post_id': postID
 		})
 	})
 
 	if (!response.ok) {
 		handleCommentFormErrors(commentInput);
+	} else if (response.ok) {
+		const responseJson = await response.json();
+		handleCommentFormValid(responseJson);
 	}
 }
 
 
+const handleCommentFormValid = (response) => {
+	const comment = response.comment
+	const created = getLocalDate(comment.created);
+	const author = comment.author;
+	const body = comment.body;
+
+	addCommentToPost(author, created, body);
+};
+
+
+const addCommentToPost = (author, date, body) => {
+	const commentsContainer = document.querySelector('.comments-container');
+	const comments = commentsContainer.querySelectorAll('.post-comment');
+	const commentTemplate = document.getElementById('comment-template');
+	const content = document.importNode(commentTemplate.content, true);	
+	let authorParagraph = content.querySelector('.comment-author');
+	let dateSpan = content.querySelector('.comment-date');
+	let bodyParagraph = content.querySelector('.comment-body');
+
+	authorParagraph.textContent = `${author} at `;
+	dateSpan.textContent = date;
+	authorParagraph.appendChild(dateSpan);
+	bodyParagraph.textContent = body;
+
+	if (comments) {
+		commentsContainer.insertBefore(content, comments[0]);
+	} else {
+		commentsContainer.appendChild(content);
+	}
+
+};
+
+
+const getLocalDate = (date) => {
+	const localDate = new Date(date);
+	const options = {month: 'long', day: '2-digit', year: 'numeric', hour12: true, hour: 'numeric', minute: '2-digit'};
+
+	return localDate.toLocaleString('en-US', options);
+};
+
+
+/*
+ * Toggle on/off red border around new comment input
+ */
 const handleCommentFormErrors = (commentInput) => {
 	commentInput.classList.toggle('new-comment-error');
 	setTimeout(() => {
