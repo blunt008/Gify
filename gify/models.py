@@ -24,6 +24,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    author = models.CharField(max_length=255)
     post = models.ForeignKey(
         Post,
         related_name='comments',
