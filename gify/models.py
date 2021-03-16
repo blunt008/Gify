@@ -29,5 +29,8 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     body = models.CharField(max_length=250)
 
+    class Meta:
+        ordering = ['-created']
+
     def __str__(self):
         return f'{self.body}'
