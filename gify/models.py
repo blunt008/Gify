@@ -16,6 +16,9 @@ class Post(models.Model):
         db_index=True
     )
 
+    class Meta:
+        ordering = ['-created']
+
     def __str__(self):
         return f"Post created: {self.created}"
 
