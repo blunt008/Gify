@@ -278,15 +278,16 @@ const handleCommentFormValid = (response, input) => {
 	const created = getLocalDate(comment.created);
 	const author = comment.author;
 	const body = comment.body;
+	const postDiv = getPostDiv(input);
+	const commentsContainer = postDiv.querySelector('.comments-container');
 
 	input.value = '';
-	addCommentToPost(author, created, body);
+	addCommentToPost(author, created, body, commentsContainer);
 };
 
 
-const addCommentToPost = (author, date, body) => {
-	const commentsContainer = document.querySelector('.comments-container');
-	const comments = commentsContainer.querySelectorAll('.post-comment');
+const addCommentToPost = (author, date, body, container) => {
+	const comments = container.querySelectorAll('.post-comment');
 	const commentTemplate = document.getElementById('comment-template');
 	const content = document.importNode(commentTemplate.content, true);	
 	let authorParagraph = content.querySelector('.comment-author');
@@ -299,9 +300,9 @@ const addCommentToPost = (author, date, body) => {
 	bodyParagraph.textContent = body;
 
 	if (comments) {
-		commentsContainer.insertBefore(content, comments[0]);
+		container.insertBefore(content, comments[0]);
 	} else {
-		commentsContainer.appendChild(content);
+		container.appendChild(content);
 	}
 
 };
