@@ -290,6 +290,7 @@ const addCommentToPost = (author, date, body, container) => {
 	const comments = container.querySelectorAll('.post-comment');
 	const commentTemplate = document.getElementById('comment-template');
 	const content = document.importNode(commentTemplate.content, true);	
+	const post = content.querySelector('.post-comment');
 	let authorParagraph = content.querySelector('.comment-author');
 	let dateSpan = content.querySelector('.comment-date');
 	let bodyParagraph = content.querySelector('.comment-body');
@@ -298,6 +299,7 @@ const addCommentToPost = (author, date, body, container) => {
 	dateSpan.textContent = date;
 	authorParagraph.appendChild(dateSpan);
 	bodyParagraph.textContent = body;
+	post.classList.toggle('animateNewCommentAdd');
 
 	if (comments) {
 		container.insertBefore(content, comments[0]);
