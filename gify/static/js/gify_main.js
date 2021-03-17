@@ -74,13 +74,13 @@ form.addEventListener("submit", event => {
  */
 const uploadURL = async () => {
 	const link = url.value;
-    const csrfToken = getCookie("csrftoken");
+	const csrfToken = getCookie("csrftoken");
 	const response = await fetch("/create/", {
 		method: "POST",
-        headers: {
-            "X-CSRFToken": csrfToken,
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
+		headers: {
+			"X-CSRFToken": csrfToken,
+			"Content-Type": "application/x-www-form-urlencoded"
+		},
 		body: new URLSearchParams({
 			"link": link
 		}),
@@ -110,7 +110,7 @@ const handleFormErrors = (responseJson) => {
 	for (const error of errors) {
 		errorArray.push(error.message);
 	}
-	
+
 	return errorArray;
 }
 
@@ -178,11 +178,11 @@ const addEventListenerToComment = () => {
 const enableComments = (event) => {
 	const postDiv = getPostDiv(event.target);
 	const commentForm = postDiv.querySelector('.new-comment-form');
-	
+
 	displayCommentInput(postDiv);
 	displayPostComments(postDiv);
 	removeClickEvent(postDiv);
-	
+
 	commentForm.addEventListener('submit', addNewComment);
 }
 
@@ -230,7 +230,7 @@ const getPostDiv = (element) => {
 		if (element.className.includes('card post')) {
 			return element;
 		}
-		height--;	
+		height--;
 	}
 }
 
@@ -289,7 +289,7 @@ const handleCommentFormValid = (response, input) => {
 const addCommentToPost = (author, date, body, container) => {
 	const comments = container.querySelectorAll('.post-comment');
 	const commentTemplate = document.getElementById('comment-template');
-	const content = document.importNode(commentTemplate.content, true);	
+	const content = document.importNode(commentTemplate.content, true);
 	const post = content.querySelector('.post-comment');
 	let authorParagraph = content.querySelector('.comment-author');
 	let dateSpan = content.querySelector('.comment-date');
@@ -312,7 +312,7 @@ const addCommentToPost = (author, date, body, container) => {
 
 const getLocalDate = (date) => {
 	const localDate = new Date(date);
-	const options = {month: 'long', day: '2-digit', year: 'numeric', hour12: true, hour: 'numeric', minute: '2-digit'};
+	const options = { month: 'long', day: '2-digit', year: 'numeric', hour12: true, hour: 'numeric', minute: '2-digit' };
 
 	return localDate.toLocaleString('en-US', options);
 };
