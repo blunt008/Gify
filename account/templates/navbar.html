@@ -31,11 +31,11 @@
         <div id="popover-profile" style="display: none;">
             <h6>Welcome {{ user.username }}</h6>
             {% if section == "index" or section == "edit" %}
-                <a class="btn navButton" href="{% url 'profile' user.username %}" role="button">Profile</a>
+                <a class="btn navButton" href="{% url 'account:profile' user.username %}" role="button">Profile</a>
             {% else %}
                 <a class="btn navButton" href="{% url 'gify:index' %}" role="button">Dashboard</a>
             {% endif %}
-            <a class="btn navButton" href="{% url 'logout' %}" role="button">Logout</a>
+            <a class="btn navButton" href="{% url 'account:logout' %}" role="button">Logout</a>
         </div>
       </li>
       {% endif %}
