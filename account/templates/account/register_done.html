@@ -7,7 +7,7 @@
 {% block content %}
 <div class="log-out">
     <h1>Welcome {{ new_user.username }}!</h1>
-    <p>You account has been succesfully created. You can now <a href="{% url 'login' %}">log in</a></p>
+    <p>You account has been succesfully created. You can now <a href="{% url 'account:login' %}">log in</a></p>
 </div>
 {% endblock %}
 

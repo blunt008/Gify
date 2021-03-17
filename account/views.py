@@ -117,7 +117,7 @@ def edit_profile(request: HttpRequest, name: str) -> HttpResponse:
     avatar_count = user_profile.avatars.count()
 
     if user_profile != request.user.profile:
-        return redirect("index")
+        return redirect("gify:index")
 
     if request.method == "POST":
         form = EditUserForm(request.POST, instance=user_profile)
