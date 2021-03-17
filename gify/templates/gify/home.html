@@ -21,7 +21,7 @@
 	</div>
 	<div class="add-new-post">
 		<div>
-			<a href="{% url 'profile' request.user.username %}">
+			<a href="{% url 'account:profile' request.user.username %}">
 			<img class="avatar-new-comment" src="{{ request.user.profile.get_avatar|thumbnail_url:'avatar' }}" alt="Your avatar">
 			</a>
 		</div>
