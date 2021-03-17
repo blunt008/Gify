@@ -525,6 +525,7 @@ a:hover {
 
 .post-author p {
 	color: rgb(176, 179, 184);
+	cursor: pointer;
 }
 
 .comment-date {
