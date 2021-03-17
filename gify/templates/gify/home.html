@@ -37,7 +37,9 @@
 <template id="comment-template">
 	<div class="post-comment">
 		<div class="post-author">
+			<a href="{% url 'account:profile' request.user.username %}">
 			<p class="comment-author"><span class="comment-date"></span></p>
+			</a>
 		</div>
 		<div>
 			<p class="comment-body"></p>
