@@ -2,7 +2,7 @@
 	<div class="post-comment">
 		<div class="post-author">
 			<a href="{% url 'account:profile' comment.author %}">
-			<p>{{ comment.author }} <span class="comment-date">{{ comment.created|date:"F d, Y," }}{{ comment.created|time:" g:i A" }}</span></p>
+			<p class="comment-author">{{ comment.author }} <span class="comment-date">{{ comment.created|date:"F d, Y," }}{{ comment.created|time:" g:i A" }}</span></p>
 			</a>
 		</div>
 			<div>
