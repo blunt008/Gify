@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gify.urls', namespace="gify")),
     path('account/', include('account.urls', namespace='account')),
+    path('', include('gify.urls', namespace="gify")),
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)
