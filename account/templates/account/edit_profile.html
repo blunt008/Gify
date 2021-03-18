@@ -35,7 +35,7 @@
         <div id="profile__about-edit">
               {% with avatar=user_profile.get_avatar %}
               {% if avatar_count == 1 %}
-			  <img data-id="{{ user_profile.id }}" id="avatar-main-edit-default" src="{{ avatar|thumbnail_url:'avatar-main' }}" alt="avatar">
+			  <img data-id="{{ user_profile.id }}" data-toggle="modal" data-target="#avatarSelection" id="avatar-main-edit-default" src="{{ avatar|thumbnail_url:'avatar-main' }}" alt="avatar">
               {% else %}
               <img data-id="{{ user_profile.id }}" data-toggle="modal" data-target="#avatarSelection" id="avatar-main-edit-default" src="{{ avatar|thumbnail_url:'avatar-main' }}">
               {% endif %}
