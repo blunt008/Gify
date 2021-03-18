@@ -36,7 +36,7 @@ const switchToDefaultAvatar = () => {
 const removeAvatar = (event, div, avatarCount) => {
     const csrfToken = getCookie("csrftoken");
     const avatarID = event.currentTarget.dataset.id;
-    
+
     fetch("/account/delete_avatar/", {
         method: "POST",
         headers: {
@@ -48,27 +48,27 @@ const removeAvatar = (event, div, avatarCount) => {
         }),
         mode: "same-origin"
     })
-    .then(response => {
-        if (response.ok) {
-            // Close modal if removed avatar was last avatar uploaded
-            if (avatarCount === 1) {
-                closeModal.click();
-                switchToDefaultAvatar();
+        .then(response => {
+            if (response.ok) {
+                // Close modal if removed avatar was last avatar uploaded
+                if (avatarCount === 1) {
+                    closeModal.click();
+                    switchToDefaultAvatar();
+                }
+                // Disable save button as well as remove div holding avatar
+                saveBtn.disabled = true;
+                saveBtn.ariaDisabled = "disabled";
+                div.remove()
+                return response.json()
+            } else {
+                return response.json()
             }
-            // Disable save button as well as remove div holding avatar
-            saveBtn.disabled = true;
-            saveBtn.ariaDisabled = "disabled";
-            div.remove()
-            return response.json()
-        } else {
-            return response.json()
-        }
-    })
-    .then(response => {
-        if (response.selected) {
-            switchToDefaultAvatar()
-        }
-    })
+        })
+        .then(response => {
+            if (response.selected) {
+                switchToDefaultAvatar()
+            }
+        })
 }
 
 
@@ -76,53 +76,41 @@ const removeAvatar = (event, div, avatarCount) => {
  * Retrieve csrfToken
  */
 const getCookie = (name) => {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
-            return cookieValue;
-        };
+        }
+    }
+    return cookieValue;
+};
 
 
 /*
  * Retrieve all available avatars available for user
  */
-const requestAvatars = (event) => {
-        const csrfToken = getCookie("csrftoken");
-        const profileID = event.target.dataset.id;
+const requestAvatars = async (event) => {
+    const csrfToken = getCookie("csrftoken");
+    const profileID = event.target.dataset.id;
 
-        // Fetch all avatars for the given user
-        fetch("/account/avatars/", {
-            method: "POST",
-            headers: {
-                "X-CSRFToken": csrfToken,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                "id": profileID
-            }),
-            mode: "same-origin"
-        })
-        .then(response => response.json())
-        .then(response => {
-            if (response.status == "ok") {
-                const avatars = response.avatars;
-                displayAvatars(avatars);
-            } else {
-                setTimeout(() => {
-                    closeModal.click();
-                }, 500)
-                console.log(response);
-            }
-        })
+    // Fetch all avatars for the given user
+    const response = await fetch("/account/avatars/", {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": csrfToken,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "id": profileID
+        }),
+        mode: "same-origin"
+    })
 }
 
 
@@ -136,7 +124,7 @@ const displayAvatars = (avatars) => {
     while (modal.firstChild) {
         modal.removeChild(modal.firstChild);
     }
-    
+
     for (const avatar of avatars) {
         const div = document.createElement("div");
         const img = document.createElement("img");
@@ -229,17 +217,17 @@ if (saveBtn) {
                 }),
                 mode: "same-origin"
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    throw new Error(response.statusText)
-                }
-            })
-            .then(response => {
-                updateAvatar(response.url);
-            })
-            .catch((error) => console.log(error.message))
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        throw new Error(response.statusText)
+                    }
+                })
+                .then(response => {
+                    updateAvatar(response.url);
+                })
+                .catch((error) => console.log(error.message))
         } else {
             console.log("Select avatar");
         }
