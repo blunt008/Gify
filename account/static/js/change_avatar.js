@@ -111,13 +111,13 @@ const requestAvatars = async (event) => {
         }),
         mode: "same-origin"
     });
-	
 
-	if (response.ok) {
-		const responseJson = await response.json();
-		const avatars = responseJson.avatars;
-		displayAvatars(avatars);
-	}
+
+    if (response.ok) {
+        const responseJson = await response.json();
+        const avatars = responseJson.avatars;
+        displayAvatars(avatars);
+    }
 }
 
 
