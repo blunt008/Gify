@@ -151,34 +151,24 @@ def get_avatars(request: HttpRequest) -> HttpResponse:
     Handle AJAX requests requesting all avatars for the
     single user.
     """
+    SKIP_FIRST_AVATAR = 1
     payload = json.loads(request.body)
     profile_id = payload.get("id")
+    profile = Profile.objects.get(pk=profile_id)
+    avatars = profile.avatars.all()[SKIP_FIRST_AVATAR:]
 
-    try:
-        profile = Profile.objects.get(pk=profile_id)
-        avatars = profile.avatars.all()[1:]
-    except Profile.DoesNotExist:
-        avatars = None
-
-    if avatars:
-        response = JsonResponse({
-            "status": "ok",
-            "avatars": [
-                {
-                    "id": avatar.id,
-                    "url": avatar.avatar.url
-                }
-                for avatar in avatars
-            ]
-        }, safe=False)
-        response.status_code = 200
-        return response
-    else:
-        response = JsonResponse({
-            "error": "There was an error retrieving user profile"
-        })
-        response.status_code = 404
-        return response
+    response = JsonResponse({
+        "status": "ok",
+        "avatars": [
+            {
+                "id": avatar.id,
+                "url": avatar.avatar.url
+            }
+            for avatar in avatars
+        ]
+    }, safe=False)
+    response.status_code = 200
+    return response
 
 @login_required
 @require_POST
