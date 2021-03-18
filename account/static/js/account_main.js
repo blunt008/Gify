@@ -31,44 +31,43 @@ const switchToDefaultAvatar = () => {
 
 
 /*
- * Initialize and handle avatar deletion request
+ * Initialize avatar deletion request
  */
-const removeAvatar = (event, div, avatarCount) => {
+const initializeAvatarDeletion = async (event, div, avatarCount) => {
     const csrfToken = Cookies.get("csrftoken");
     const avatarID = event.currentTarget.dataset.id;
 
-    fetch("/account/delete_avatar/", {
-        method: "POST",
-        headers: {
-            "X-CSRFToken": csrfToken,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "id": avatarID
-        }),
-        mode: "same-origin"
-    })
-        .then(response => {
-            if (response.ok) {
-                // Close modal if removed avatar was last avatar uploaded
-                if (avatarCount === 1) {
-                    closeModal.click();
-                    switchToDefaultAvatar();
-                }
-                // Disable save button as well as remove div holding avatar
-                saveBtn.disabled = true;
-                saveBtn.ariaDisabled = "disabled";
-                div.remove()
-                return response.json()
-            } else {
-                return response.json()
-            }
-        })
-        .then(response => {
-            if (response.selected) {
-                switchToDefaultAvatar()
-            }
-        })
+	const response = await fetch('/account/delete_avatar/', {
+		method: 'POST',
+		headers: {
+			'X-CSRFToken': csrfToken,
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			'id': avatarID
+		}),
+		mode: 'same-origin'
+	})
+
+	if (response.ok) {
+		const lastAvatar = avatarCount === 1 ? true : false;
+		removeAvatar(div, lastAvatar);
+	}
+};
+
+
+/*
+ * Handle avatar deletion request
+ */
+const removeAvatar = (parentDiv, lastAvatar) => {
+	if (lastAvatar) {
+		closeModal.click();
+		switchToDefaultAvatar();
+	}
+
+	saveBtn.disabled = true;
+	saveBtn.ariaDisabled = 'disabled';
+	parentDiv.remove();
 };
 
 
@@ -125,7 +124,7 @@ const displayAvatars = (avatars) => {
         deleteAvatarBtn.type = "button";
         deleteAvatarBtn.dataset.id = avatar.id;
         deleteAvatarBtn.addEventListener("click", (event) => {
-            removeAvatar(event, div, avatarCount);
+            initializeAvatarDeletion(event, div, avatarCount);
         })
         deleteSpan.ariaHidden = "true";
         deleteSpan.innerHTML = "&times;";
