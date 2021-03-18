@@ -1,4 +1,4 @@
-const userAvatar = document.getElementById("avatar-main-edit");
+const userAvatar = document.getElementById("avatar-main-edit-default");
 const saveBtn = document.getElementById("save");
 const closeModal = document.getElementById("close");
 
