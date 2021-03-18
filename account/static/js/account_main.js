@@ -69,7 +69,7 @@ const removeAvatar = (event, div, avatarCount) => {
                 switchToDefaultAvatar()
             }
         })
-}
+};
 
 
 /*
