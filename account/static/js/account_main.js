@@ -14,7 +14,7 @@ const updateAvatar = (url) => {
     userAvatar.src = url;
 
     closeModal.click();
-}
+};
 
 
 /*
@@ -27,7 +27,7 @@ const switchToDefaultAvatar = () => {
     userAvatar.src = "/static/no-avatar.png";
     userAvatar.removeAttribute("data-toggle");
     userAvatar.removeEventListener("click", requestAvatars);
-}
+};
 
 
 /*
@@ -118,7 +118,7 @@ const requestAvatars = async (event) => {
         const avatars = responseJson.avatars;
         displayAvatars(avatars);
     }
-}
+};
 
 
 /*
@@ -161,7 +161,7 @@ const displayAvatars = (avatars) => {
         saveBtn.ariaDisabled = "disabled";
         div.addEventListener("click", (event) => selectAvatar(event));
     }
-}
+};
 
 
 /*
@@ -189,7 +189,7 @@ const selectAvatar = (event) => {
 
     saveBtn.disabled = false;
     saveBtn.removeAttribute("aria-disabled");
-}
+};
 
 
 if (userAvatar) {
@@ -239,4 +239,4 @@ if (saveBtn) {
             console.log("Select avatar");
         }
     })
-}
+};
