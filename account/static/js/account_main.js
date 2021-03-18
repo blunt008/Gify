@@ -4,8 +4,8 @@ const closeModal = document.getElementById("close");
 
 
 /*
- * Update main and navbar avatars to the URL
- * received
+ * Change source attribute of the main and nav avatar
+ * close modal after
  */
 const updateAvatar = (url) => {
     const navAvatar = document.getElementById("avatar-nav");
@@ -31,7 +31,7 @@ const switchToDefaultAvatar = () => {
 
 
 /*
- * Delete avatar
+ * Initialize and handle avatar deletion request
  */
 const removeAvatar = (event, div, avatarCount) => {
     const csrfToken = getCookie("csrftoken");
@@ -93,7 +93,7 @@ const getCookie = (name) => {
 
 
 /*
- * Retrieve all available avatars available for user
+ * Retrieve all avatars available for user
  */
 const requestAvatars = async (event) => {
     const csrfToken = getCookie("csrftoken");
@@ -122,7 +122,7 @@ const requestAvatars = async (event) => {
 
 
 /*
- * Display all available avatars
+ * Display all available avatars inside the modal
  */
 const displayAvatars = (avatars) => {
     const modal = document.querySelector(".modal-body");
@@ -165,7 +165,7 @@ const displayAvatars = (avatars) => {
 
 
 /*
- * Select clicked avatar
+ * Handle avatar selection inside the avatars modal
  */
 const selectAvatar = (event) => {
     const avatars = document.querySelectorAll(".avatar-preview-container");
@@ -192,11 +192,19 @@ const selectAvatar = (event) => {
 };
 
 
+/*
+ * Check if user avatar is loaded on the page and if it is
+ * add event handler to it
+ */
 if (userAvatar) {
-    // If user avatar exists on page do:
     userAvatar.addEventListener("click", requestAvatars);
 }
 
+
+/*
+ * Check if save button is loaded on the page and if it is
+ * handle saving avatar logic
+ */
 if (saveBtn) {
     saveBtn.addEventListener("click", (event) => {
         const modal = document.querySelector(".modal");
