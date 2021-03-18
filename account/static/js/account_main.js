@@ -34,7 +34,7 @@ const switchToDefaultAvatar = () => {
  * Initialize and handle avatar deletion request
  */
 const removeAvatar = (event, div, avatarCount) => {
-    const csrfToken = getCookie("csrftoken");
+    const csrfToken = Cookies.get("csrftoken");
     const avatarID = event.currentTarget.dataset.id;
 
     fetch("/account/delete_avatar/", {
@@ -76,7 +76,7 @@ const removeAvatar = (event, div, avatarCount) => {
  * Retrieve all avatars available for user
  */
 const requestAvatars = async (event) => {
-    const csrfToken = getCookie("csrftoken");
+    const csrfToken = Cookies.get("csrftoken");
     const profileID = event.target.dataset.id;
 
     // Fetch all avatars for the given user
@@ -189,7 +189,7 @@ if (saveBtn) {
     saveBtn.addEventListener("click", (event) => {
         const modal = document.querySelector(".modal");
         const avatars = document.querySelectorAll(".avatar-preview-container");
-        const csrfToken = getCookie("csrftoken");
+        const csrfToken = Cookies.get("csrftoken");
         let avatarSelected = false;
         let selectedAvatarID = 0;
 

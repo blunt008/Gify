@@ -74,7 +74,8 @@ form.addEventListener("submit", event => {
  */
 const uploadURL = async () => {
 	const link = url.value;
-	const csrfToken = getCookie("csrftoken");
+	const csrfToken = Cookies.get("csrftoken");
+
 	const response = await fetch("/create/", {
 		method: "POST",
 		headers: {
@@ -193,7 +194,7 @@ const enableComments = (event) => {
 const displayPostComments = async (postDiv) => {
 	const postID = postDiv.dataset.id;
 	const postsContainer = postDiv.querySelector('.comments-container');
-	const csrfToken = getCookie('csrftoken');
+	const csrfToken = Cookies.get('csrftoken');
 
 	const response = await fetch(`/get_comments?post=${postID}`, {
 		method: 'GET',
@@ -246,7 +247,7 @@ const removeClickEvent = (postDiv) => {
 
 const addNewComment = async (event) => {
 	event.preventDefault();
-	const csrfToken = getCookie('csrftoken');
+	const csrfToken = Cookies.get('csrftoken');
 	const commentInput = event.target.querySelector('.new-comment-input');
 	const commentBody = commentInput.value;
 	const postDiv = getPostDiv(event.target);
