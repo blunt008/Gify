@@ -546,12 +546,14 @@ a:hover {
 	text-align: center;
 	border-radius: 8px;
 	overflow: hidden;
+	height: 400px;
 }
 
 .card-header {
 	background: #2c3a47;
-	padding: 60px 40px;
+	padding: 30px 40px;
 	width: 400px;
+	height: 100%;
 }
 
 .pic {
@@ -638,8 +640,9 @@ a:hover {
 
 .card-footer {
 	background: #f4f4f4;
-	padding: 60px 10px;
+	padding: 20px 10px;
 	width: 400px;
+	height: 100%;
 }
 
 .numbers {
