@@ -148,7 +148,7 @@ a:hover {
 #profile-container {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 60%;
     margin: 5em auto;
     padding: 2em;
 }
