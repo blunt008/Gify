@@ -101,9 +101,10 @@ def profile(request: HttpRequest, name: str) -> HttpResponse:
     View function for displaying user profiles
     """
     user_profile = get_object_or_404(Profile, user__username=name)
+
     return render(
         request,
-        "account/profile.html",
+        "account/profile-new.html",
         {'section': 'profile', "user_profile": user_profile}
     )
 
