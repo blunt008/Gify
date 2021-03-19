@@ -554,7 +554,7 @@ a:hover {
 	/* animation-duration: 2s; */
 	/* animation-play-state: running; */
 	/* animation-fill-mode: forwards; */
-	animation: disappear 1s linear forwards;
+	animation: disappear 0.5s linear forwards;
 }
 
 @keyframes disappear {
