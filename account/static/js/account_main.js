@@ -227,3 +227,30 @@ if (saveBtn) {
         }
     })
 };
+
+
+/*
+ * Animate profile card and redirect to edit page
+ */
+const animateAndRedirectToEditPage = (button) => {
+	const profileCard = button.parentNode.parentNode;
+	const urlToEditPage = button.href;
+
+	profileCard.classList.toggle('disappear');
+	profileCard.addEventListener('animationend', event => {
+		window.location.href = urlToEditPage;
+	});
+};
+
+
+/*
+ * Use delegated events to handle clements that might not be rendered on a page
+ * yet
+ */
+document.addEventListener('click', event => {
+	if (event.target.matches('.edit-btn')) {
+		event.preventDefault();
+		const button = event.target;
+		animateAndRedirectToEditPage(button);
+	}
+});
