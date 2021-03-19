@@ -25,7 +25,7 @@
 					<a class="fab fa-youtube" href="#"></a>
 				</div>
 				{% if request.user.profile == user_profile %}
-					<a href="{% url 'account:edit_profile' user.username %}" class="follow-btn">Edit</a>
+					<a href="{% url 'account:edit_profile' user.username %}" class="edit-btn">Edit</a>
 				{% else %}
 					<a href="#" class="follow-btn">Follow</a>
 				{% endif %}

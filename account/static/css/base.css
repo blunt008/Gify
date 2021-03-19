@@ -622,7 +622,8 @@ a:hover {
 	cursor: pointer;
 }
 
-.follow-btn {
+.follow-btn,
+.edit-btn {
 	display: inline-block;
 	padding: 12px 50px;
 	color: #e66767;
@@ -632,7 +633,8 @@ a:hover {
 	transition: 0.3s linear;
 }
 
-.follow-btn:hover {
+.follow-btn:hover,
+.edit-btn:hover {
 	background: #e66767;
 	color: #f2f2f2;
 	cursor: pointer;
