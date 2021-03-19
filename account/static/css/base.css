@@ -554,17 +554,13 @@ a:hover {
 	/* animation-duration: 2s; */
 	/* animation-play-state: running; */
 	/* animation-fill-mode: forwards; */
-	animation: disappear 0.5s linear forwards;
+	animation: disappear 0.3s linear forwards;
 }
 
 @keyframes disappear {
-	10% {
+	30% {
 		transform: translateX(-25%);
 		opacity: 0.5;
-	}
-
-	30% {
-		opacity: 0;
 	}
 
 	50% {
