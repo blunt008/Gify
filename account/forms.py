@@ -135,7 +135,8 @@ class EditUserForm(forms.ModelForm):
     
     class Meta:
         model = Profile
-        fields = ("about",)
+        fields = ("about", 'title')
         widgets = {
             "about": forms.Textarea(attrs={"class": "form-control", "rows": 5}),
+            'title': forms.TextInput(attrs={'class': 'form-control'})
         }
