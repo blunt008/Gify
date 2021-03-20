@@ -1,5 +1,4 @@
 * {
-	cursor: default;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -172,11 +171,10 @@ a:hover {
 #avatar-main-edit,
 #avatar-default-edit,
 #avatar-main-edit-default {
-    height: 175px;
-    width: 170px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     cursor: pointer;
-    margin-bottom: 0.5rem;
 }
 
 #profile__stats {
@@ -549,30 +547,34 @@ a:hover {
 	height: 400px;
 }
 
+.profile-card-edit {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	flex-direction: row;
+	text-align: center;
+	border-radius: 8px;
+	overflow: hidden;
+	height: 400px;
+	animation: appear 0.3s linear forwards;
+}
+
 .profile-card.disappear {
-	/* animation-name: disappear; */
-	/* animation-duration: 2s; */
-	/* animation-play-state: running; */
-	/* animation-fill-mode: forwards; */
 	animation: disappear 0.3s linear forwards;
 }
 
 @keyframes disappear {
-	30% {
-		transform: translateX(-25%);
-		opacity: 0.5;
-	}
-
-	50% {
-		opacity: 0;
-		transform: translateX(-50%);
-	}
-
 	100% {
+		transform: translateX(-100%);
 		opacity: 0;
-		transform: translateX(-50%);
 	}
 
+}
+
+@keyframes appear {
+	0% {
+		transform: translateX(100%);
+	}
 }
 
 
@@ -660,8 +662,19 @@ a:hover {
 	transition: 0.3s linear;
 }
 
+.save-profile-btn {
+	display: inline-block;
+	color: #e66767;
+	border: 2px solid #e66767;
+	border-radius: 6px;
+	margin-top: 5px;
+	transition: 0.3s linear;
+	padding: 10px 30px;
+}
+
 .follow-btn:hover,
-.edit-btn:hover {
+.edit-btn:hover,
+.save-profile-btn:hover {
 	background: #e66767;
 	color: #f2f2f2;
 	cursor: pointer;
@@ -703,4 +716,15 @@ a:hover {
 	padding-top: 25%;
 }
 
+.about-edit {
 
+}
+
+.edit-form-label,
+#id_avatar {
+	color: #2c3a47;
+}
+
+form {
+	cursor: pointer;
+}
