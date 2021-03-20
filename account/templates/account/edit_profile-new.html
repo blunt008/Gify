@@ -57,6 +57,10 @@
 					<form method="POST" enctype="multipart/form-data">
 						{% csrf_token %}
 						<p>
+							<label class="edit-form-label" for="id_title">Title</label>
+							{{ form.title }}
+						</p>
+						<p>
 							<label class="edit-form-label" for="id_about">About</label>
 							{{ form.about }}
 						</p>
