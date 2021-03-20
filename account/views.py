@@ -134,7 +134,7 @@ def edit_profile(request: HttpRequest, name: str) -> HttpResponse:
 
     return render(
         request,
-        "account/edit_profile.html",
+        "account/edit_profile-new.html",
         {
             "section": "edit",
             "user_profile": user_profile,
