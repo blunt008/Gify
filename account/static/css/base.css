@@ -271,7 +271,8 @@ a:hover {
     font-size: 0.9rem;
 }
 
-#id_about {
+#id_about,
+#id_title {
     background: rgb(228, 230, 235);
 }
 
