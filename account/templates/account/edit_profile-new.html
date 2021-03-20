@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Profile{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<!-- Modal -->
+<div class="modal fade" id="avatarSelection" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your avatars</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button aria-disabled="disabled" type="button" id="save" class="btn
+            btn-primary" disabled>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+	<div id="profile-container">
+		<div class="profile-card-edit">
+			<div class="card-header">
+				<div class="pic">
+				  {% with avatar=user_profile.get_avatar %}
+				  {% if avatar_count == 1 %}
+				  <img data-id="{{ user_profile.id }}" data-toggle="modal" data-target="#avatarSelection" id="avatar-main-edit-default" src="{{ avatar|thumbnail_url:'avatar-main' }}" alt="avatar">
+				  {% else %}
+				  <img data-id="{{ user_profile.id }}" data-toggle="modal" data-target="#avatarSelection" id="avatar-main-edit-default" src="{{ avatar|thumbnail_url:'avatar-main' }}">
+				  {% endif %}
+				  {% endwith %}
+				</div>
+				<div class="name">Damian Tabor</div>
+				<div class="sm">
+					<a class="fab fa-facebook-f" href="#"></a>
+					<a class="fab fa-twitter" href="#"></a>
+					<a class="fab fa-github" href="#"></a>
+					<a class="fab fa-youtube" href="#"></a>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div class="about-edit">
+					<form method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						<p>
+							<label class="edit-form-label" for="id_about">About</label>
+							{{ form.about }}
+						</p>
+						{% if avatar_count >= 4 %}
+						<p class="avatar-warning">Max. amount of avatars (3) reached.</p>
+						<p class="avatar-warning">Please remove some avatars before uploading new ones.</p>
+						{% else %}
+						<p>
+							<label class="edit-form-label" for="id_avatar">Upload new avatar</label>
+							{{ form.avatar }}
+						</p>
+						{% endif %}
+						<div id="save-edit">
+							<a href="{% url 'account:password_change' %}">Change Password</a>
+							<input type="submit" class="save-profile-btn" value="Save">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
