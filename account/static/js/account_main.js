@@ -21,7 +21,7 @@ const updateAvatar = (url) => {
  * Change user's avatar to default one (no avatar)
  */
 const switchToDefaultAvatar = () => {
-    const navAvatar = document.getElementById("avatar-link");
+    const navAvatar = document.getElementById("avatar-nav");
 
     navAvatar.src = "/static/no-avatar.png";
     userAvatar.src = "/static/no-avatar.png";
