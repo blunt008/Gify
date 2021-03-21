@@ -243,6 +243,15 @@ const animateAndRedirectToEditPage = (button) => {
 };
 
 
+const handleSocialLinkForm = (button) => {
+	const allSocialUrlForms = document.querySelectorAll('.social-profile-url');
+	const socialForm = button.querySelector('.social-profile-url');
+
+	allSocialUrlForms.forEach(form => form.classList.remove('showLink'));
+	socialForm.classList.toggle('showLink');
+};
+
+
 /*
  * Use delegated events to handle clements that might not be rendered on a page
  * yet
@@ -252,5 +261,14 @@ document.addEventListener('click', event => {
 		event.preventDefault();
 		const button = event.target;
 		animateAndRedirectToEditPage(button);
+	}
+
+	if (event.target.matches('#youtube') || 
+		event.target.matches('#github')  || 
+		event.target.matches('#twitter') ||
+		event.target.matches('#facebook')) {
+
+		const socialButton = event.target;
+		handleSocialLinkForm(socialButton);
 	}
 });
