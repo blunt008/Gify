@@ -46,14 +46,43 @@
 				</div>
 				<div class="name">Damian Tabor</div>
 				<div class="sm">
-					<a class="fab fa-facebook-f" href="#"></a>
-					<a class="fab fa-twitter" href="#"></a>
-					<a class="fab fa-github" href="#"></a>
+					<a id="facebook" class="fab fa-facebook-f" href="#">
+						<div class="social-profile-url">
+							<form method="POST" novalidate>
+								{% csrf_token %}
+								<p>Add Facebook profile:</p>
+								<input type="text">
+								<!-- <input type="submit" value="Update"> -->
+							</form>
+						</div>
+					</a>
+					<a id="twitter" class="fab fa-twitter" href="#">
+						<div class="social-profile-url">
+							<form method="POST" novalidate>
+								{% csrf_token %}
+								<p>Add Twitter profile:</p>
+								<input type="text">
+								<!-- <input type="submit" value="Update"> -->
+							</form>
+						</div>
+					</a>
+					<a id="github" class="fab fa-github" href="#">
+						<div class="social-profile-url">
+							<form method="POST" novalidate>
+								{% csrf_token %}
+								<p>Add Github profile:</p>
+								<input type="text">
+								<!-- <input type="submit" value="Update"> -->
+							</form>
+						</div>
+					</a>
 					<a id="youtube" class="fab fa-youtube" href="#">
 						<div class="social-profile-url">
 							<form method="POST" novalidate>
-								<p>YouTube profile:</p>
+								{% csrf_token %}
+								<p>Add YT profile:</p>
 								<input type="text">
+								<!-- <input type="submit" value="Update"> -->
 							</form>
 						</div>
 					</a>
