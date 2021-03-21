@@ -13,6 +13,7 @@ if (open) {
 	open.addEventListener("click", (event) => {
 		event.preventDefault();
 		url.value = "";
+		modal_container.style.opacity = null;
 		modal_container.classList.add("show");
 	})
 }
@@ -24,6 +25,7 @@ if (open) {
  */
 const removeModal = () => {
 	modal_container.classList.remove("show");
+	modal_container.style.opacity = '0';
 }
 
 
