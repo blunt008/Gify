@@ -777,5 +777,6 @@ form {
 @keyframes showURL {
 	0% {
 		transform: translateX(25%);
+		opacity: 0;
 	}
 }
