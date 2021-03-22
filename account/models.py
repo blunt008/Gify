@@ -20,10 +20,10 @@ class Profile(models.Model):
     title = models.CharField(max_length=40)
     about = models.CharField(max_length=255)
     joined = models.DateField(auto_now_add=True)
-    facebook_url = models.URLField(max_length=40)
-    twitter_url = models.URLField(max_length=40)
-    github_url = models.URLField(max_length=40)
-    youtube_url = models.URLField(max_length=40)
+    facebook_url = models.URLField(max_length=40, default='')
+    twitter_url = models.URLField(max_length=40, default='')
+    github_url = models.URLField(max_length=40, default='')
+    youtube_url = models.URLField(max_length=40, default='')
 
     def __repr__(self):
         return f"Profile: {self.username}"
@@ -67,15 +67,6 @@ class Profile(models.Model):
     def validate_urls(self, urls: dict) -> bool:
         """
         Check if URLs received are valid URLs.
-        
-        Parameters
-        ----------
-        urls : dict
-            Dict containing url for each social profile on user's edit page
-
-        Returns
-        -------
-        True if all URLs are valid URLs. False otherwise
         """
         url_validator = URLValidator()
         for value in urls.values():
@@ -89,15 +80,6 @@ class Profile(models.Model):
     def update_social_urls(self, urls: dict) -> None:
         """
         Update user's profile with the social URLs received
-        
-        Parameters
-        ----------
-        urls : dict
-            Dict containing urls for each user's social profile
-
-        Returns
-        -------
-        None
         """
         facebook_url = urls.get('facebook', '')
         twitter_url = urls.get('twitter', '')
