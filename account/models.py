@@ -86,6 +86,34 @@ class Profile(models.Model):
         
         return True     
 
+    def update_social_urls(self, urls: dict) -> bool:
+        """
+        Update user's profile with the social URLs received
+        
+        Parameters
+        ----------
+        urls : dict
+            Dict containing urls for each user's social profile
+
+        Returns
+        -------
+        True if user profile was updated succesfully. False otherwise.
+        """
+        facebook_url = urls.get('facebook', '')
+        twitter_url = urls.get('twitter', '')
+        github_url = urls.get('github', '')
+        youtube_url = urls.get('youtube', '')
+
+        self.facebook_url = facebook_url
+        self.twitter_url = twitter_url
+        self.github_url = github_url
+        self.youtube_url = youtube_url
+
+        self.save()
+
+        return True
+
+
         
 class Avatar(models.Model):
 
