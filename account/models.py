@@ -18,6 +18,10 @@ class Profile(models.Model):
     title = models.CharField(max_length=40)
     about = models.CharField(max_length=255)
     joined = models.DateField(auto_now_add=True)
+    facebook_url = models.URLField(max_length=40)
+    twitter_url = models.URLField(max_length=40)
+    github_url = models.URLField(max_length=40)
+    youtube_url = models.URLField(max_length=40)
 
     def __repr__(self):
         return f"Profile: {self.username}"
