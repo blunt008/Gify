@@ -259,7 +259,9 @@ const updateUserSocialProfiles = () => {
 	const socialProfileLinks = {};
 
 	socialInputs.forEach(input => {
-		socialProfileLinks[input.name] = input.value;
+		if (input.value) {
+			socialProfileLinks[input.name] = input.value;
+		}
 	});
 
 	sendRequestToUpdateSocialLinks(socialProfileLinks);
