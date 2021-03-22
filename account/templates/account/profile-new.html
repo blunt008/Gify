@@ -20,16 +20,16 @@
 				<div class="desc">{{ user_profile.title }}</div>
 				<div class="sm">
 					{% if user_profile.facebook_url %}
-					<a class="fab fa-facebook-f" href="#"></a>
+					<a class="fab fa-facebook-f" href="{{ user_profile.facebook_url }}" target="_blank"></a>
 					{% endif %}
 					{% if user_profile.twitter_url %}
-					<a class="fab fa-twitter" href="#"></a>
+					<a class="fab fa-twitter" href="{{ user_profile.twitter_url }}" target="_blank"></a>
 					{% endif %}
 					{% if user_profile.github_url %}
-					<a class="fab fa-github" href="#"></a>
+					<a class="fab fa-github" href="{{ user_profile.github_url }}" target="_blank"></a>
 					{% endif %}
 					{% if user_profile.youtube_url %}
-					<a class="fab fa-youtube" href="#"></a>
+					<a class="fab fa-youtube" href="{{ user_profile.youtube_url }}" target="_blank"></a>
 					{% endif %}
 				</div>
 				{% if request.user.profile == user_profile %}
