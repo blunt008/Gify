@@ -86,7 +86,7 @@ class Profile(models.Model):
         
         return True     
 
-    def update_social_urls(self, urls: dict) -> bool:
+    def update_social_urls(self, urls: dict) -> None:
         """
         Update user's profile with the social URLs received
         
@@ -97,7 +97,7 @@ class Profile(models.Model):
 
         Returns
         -------
-        True if user profile was updated succesfully. False otherwise.
+        None
         """
         facebook_url = urls.get('facebook', '')
         twitter_url = urls.get('twitter', '')
@@ -110,9 +110,6 @@ class Profile(models.Model):
         self.youtube_url = youtube_url
 
         self.save()
-
-        return True
-
 
         
 class Avatar(models.Model):
