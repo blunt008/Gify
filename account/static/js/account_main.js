@@ -252,6 +252,55 @@ const handleSocialLinkForm = (button) => {
 };
 
 
+
+
+const updateUserSocialProfiles = () => {
+	const socialInputs = document.querySelectorAll('.edit-profile-input');
+	const socialProfileLinks = {};
+
+	socialInputs.forEach(input => {
+		socialProfileLinks[input.name] = input.value;
+	});
+
+	sendRequestToUpdateSocialLinks(socialProfileLinks);
+};
+
+
+const sendRequestToUpdateSocialLinks = async (links) => {
+    const csrfToken = Cookies.get("csrftoken");
+	const response = await fetch('/account/update/social/', {
+		method: 'POST',
+		headers: {
+			'X-CSRFToken': csrfToken,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(links)
+	})
+
+
+	if (response.ok) {
+		const responseJson = await response.json();
+		handleSocialProfileUpdateSuccess(responseJson);
+	}
+};
+
+
+const handleSocialProfileUpdateSuccess = (response) => {
+	console.log(response);
+};
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	const editProfileForm = document.getElementById('edit-profile-form');
+
+	if (editProfileForm) {
+		editProfileForm.addEventListener('submit', event => {
+			updateUserSocialProfiles();
+		});
+	}
+});
+
+
 /*
  * Use delegated events to handle clements that might not be rendered on a page
  * yet
@@ -265,10 +314,10 @@ document.addEventListener('click', event => {
 
 	if (event.target.matches('#youtube') || 
 		event.target.matches('#github')  || 
-		event.target.matches('#twitter') ||
-		event.target.matches('#facebook')) {
+		event.target.matches('#twitter') || event.target.matches('#facebook')) {
 
 		const socialButton = event.target;
 		handleSocialLinkForm(socialButton);
 	}
+
 });
