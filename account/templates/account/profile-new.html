@@ -19,10 +19,18 @@
 				<div class="name">Damian Tabor</div>
 				<div class="desc">{{ user_profile.title }}</div>
 				<div class="sm">
+					{% if user_profile.facebook_url %}
 					<a class="fab fa-facebook-f" href="#"></a>
+					{% endif %}
+					{% if user_profile.twitter_url %}
 					<a class="fab fa-twitter" href="#"></a>
+					{% endif %}
+					{% if user_profile.github_url %}
 					<a class="fab fa-github" href="#"></a>
+					{% endif %}
+					{% if user_profile.youtube_url %}
 					<a class="fab fa-youtube" href="#"></a>
+					{% endif %}
 				</div>
 				{% if request.user.profile == user_profile %}
 					<a href="{% url 'account:edit_profile' user.username %}" class="edit-btn">Edit</a>
