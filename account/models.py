@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 from network.settings import STATIC_URL
 
 from django.conf import settings
@@ -61,6 +63,30 @@ class Profile(models.Model):
             avatar.save()
         except Avatar.DoesNotExist:
             pass
+
+    def validate_urls(self, urls: dict) -> bool:
+        """
+        Check if URLs received are valid URLs.
+        
+        Parameters
+        ----------
+        urls : dict
+            Dict containing url for each social profile on user's edit page
+
+        Returns
+        -------
+        True if all URLs are valid URLs. False otherwise
+        """
+        url_validator = URLValidator()
+        for value in urls.values():
+            try:
+                url_validator(value)
+            except ValidationError:
+                return False
+        
+        return True     
+
+        
 
 
 class Avatar(models.Model):
