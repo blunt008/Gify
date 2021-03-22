@@ -247,3 +247,19 @@ def delete_avatar(request):
         })
         response.status_code = 500
         return response
+
+
+
+@login_required
+@require_POST
+def update_social(request):
+    """
+    Handle AJAX requests updating user's social URLs
+    """
+    profile = request.user.profile
+    body = json.loads(request.body)
+    if profile.validate_urls(body):
+        profile.update_social_urls(body)
+        return JsonResponse({'status': 'ok'}, status=201)
+    else:
+        return JsonResponse({'status': "Error updating social profiles. Check your links..."}, status=422)
