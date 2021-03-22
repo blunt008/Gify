@@ -302,8 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /*
- * Use delegated events to handle clements that might not be rendered on a page
- * yet
+ * Use delegated events to handle clements that might not be rendered on a page yet
  */
 document.addEventListener('click', event => {
 	if (event.target.matches('.edit-btn')) {
