@@ -87,8 +87,6 @@ class Profile(models.Model):
         return True     
 
         
-
-
 class Avatar(models.Model):
 
     user = models.ForeignKey(
