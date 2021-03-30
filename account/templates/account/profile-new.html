@@ -36,7 +36,7 @@
 					<a href="{% url 'account:edit_profile' user.username %}" class="edit-btn">Edit</a>
 				{% else %}
                     {% with followers=user_profile.all %}
-					<a href="#" class="follow-btn" 
+                    <a href="#" class="follow-btn" data-id="{{ user_profile.id }}
                     data-action="{% if request.user in followers %}un
                                  {% endif %}follow">
                         {% if request.user in followers %}
