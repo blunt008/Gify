@@ -37,22 +37,22 @@ const initializeAvatarDeletion = async (event, div, avatarCount) => {
     const csrfToken = Cookies.get("csrftoken");
     const avatarID = event.currentTarget.dataset.id;
 
-	const response = await fetch('/account/delete_avatar/', {
-		method: 'POST',
-		headers: {
-			'X-CSRFToken': csrfToken,
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			'id': avatarID
-		}),
-		mode: 'same-origin'
-	})
+    const response = await fetch('/account/delete_avatar/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'id': avatarID
+        }),
+        mode: 'same-origin'
+    })
 
-	if (response.ok) {
-		const lastAvatar = avatarCount === 1 ? true : false;
-		removeAvatar(div, lastAvatar);
-	}
+    if (response.ok) {
+        const lastAvatar = avatarCount === 1 ? true : false;
+        removeAvatar(div, lastAvatar);
+    }
 };
 
 
@@ -60,14 +60,14 @@ const initializeAvatarDeletion = async (event, div, avatarCount) => {
  * Handle avatar deletion request
  */
 const removeAvatar = (parentDiv, lastAvatar) => {
-	if (lastAvatar) {
-		closeModal.click();
-		switchToDefaultAvatar();
-	}
+    if (lastAvatar) {
+        closeModal.click();
+        switchToDefaultAvatar();
+    }
 
-	saveBtn.disabled = true;
-	saveBtn.ariaDisabled = 'disabled';
-	parentDiv.remove();
+    saveBtn.disabled = true;
+    saveBtn.ariaDisabled = 'disabled';
+    parentDiv.remove();
 };
 
 
@@ -233,62 +233,62 @@ if (saveBtn) {
  * Animate profile card and redirect to edit page
  */
 const animateAndRedirectToEditPage = (button) => {
-	const profileCard = button.parentNode.parentNode;
-	const urlToEditPage = button.href;
+    const profileCard = button.parentNode.parentNode;
+    const urlToEditPage = button.href;
 
-	profileCard.classList.toggle('disappear');
-	profileCard.addEventListener('animationend', event => {
-		window.location.href = urlToEditPage;
-	});
+    profileCard.classList.toggle('disappear');
+    profileCard.addEventListener('animationend', event => {
+        window.location.href = urlToEditPage;
+    });
 };
 
 
 const handleSocialLinkForm = (button) => {
-	const allSocialUrlForms = document.querySelectorAll('.social-profile-url');
-	const socialForm = button.querySelector('.social-profile-url');
+    const allSocialUrlForms = document.querySelectorAll('.social-profile-url');
+    const socialForm = button.querySelector('.social-profile-url');
 
-	allSocialUrlForms.forEach(form => form.classList.remove('showLink'));
-	socialForm.classList.toggle('showLink');
+    allSocialUrlForms.forEach(form => form.classList.remove('showLink'));
+    socialForm.classList.toggle('showLink');
 };
 
 
 
 
 const updateUserSocialProfiles = () => {
-	const socialInputs = document.querySelectorAll('.edit-profile-input');
-	const socialProfileLinks = {};
+    const socialInputs = document.querySelectorAll('.edit-profile-input');
+    const socialProfileLinks = {};
 
-	socialInputs.forEach(input => {
-		if (input.value) {
-			socialProfileLinks[input.name] = input.value;
-		}
-	});
+    socialInputs.forEach(input => {
+        if (input.value) {
+            socialProfileLinks[input.name] = input.value;
+        }
+    });
 
-	sendRequestToUpdateSocialLinks(socialProfileLinks);
+    sendRequestToUpdateSocialLinks(socialProfileLinks);
 };
 
 
 const sendRequestToUpdateSocialLinks = async (links) => {
     const csrfToken = Cookies.get("csrftoken");
-	const response = await fetch('/account/update/social/', {
-		method: 'POST',
-		headers: {
-			'X-CSRFToken': csrfToken,
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(links)
-	})
+    const response = await fetch('/account/update/social/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(links)
+    })
 
 
-	if (response.ok) {
-		const responseJson = await response.json();
-		handleSocialProfileUpdateSuccess(responseJson);
-	}
+    if (response.ok) {
+        const responseJson = await response.json();
+        handleSocialProfileUpdateSuccess(responseJson);
+    }
 };
 
 
 const handleSocialProfileUpdateSuccess = (response) => {
-	console.log(response);
+    console.log(response);
 };
 
 
@@ -301,13 +301,13 @@ const followOrUnfollowUser = (button) => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-	const editProfileForm = document.getElementById('edit-profile-form');
+    const editProfileForm = document.getElementById('edit-profile-form');
 
-	if (editProfileForm) {
-		editProfileForm.addEventListener('submit', event => {
-			updateUserSocialProfiles();
-		});
-	}
+    if (editProfileForm) {
+        editProfileForm.addEventListener('submit', event => {
+            updateUserSocialProfiles();
+        });
+    }
 
     /*
      * Use delegated events to handle clements that might not 
