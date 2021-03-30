@@ -292,6 +292,14 @@ const handleSocialProfileUpdateSuccess = (response) => {
 };
 
 
+/*
+ * Handle un / following users
+ */
+const followOrUnfollowUser = (button) => {
+    console.log(button);
+};
+
+
 document.addEventListener('DOMContentLoaded', () => {
 	const editProfileForm = document.getElementById('edit-profile-form');
 
@@ -321,4 +329,9 @@ document.addEventListener('click', event => {
 		handleSocialLinkForm(socialButton);
 	}
 
+    if (event.target.matches('.follow-btn')) {
+        event.preventDefault();
+        const button = event.target;
+        followOrUnfollowUser(button);
+    }
 });
