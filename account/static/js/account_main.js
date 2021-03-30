@@ -308,30 +308,30 @@ document.addEventListener('DOMContentLoaded', () => {
 			updateUserSocialProfiles();
 		});
 	}
-});
 
+    /*
+     * Use delegated events to handle clements that might not 
+     * be rendered on a page yet
+     */
+    document.addEventListener('click', event => {
+        if (event.target.matches('.edit-btn')) {
+            event.preventDefault();
+            const button = event.target;
+            animateAndRedirectToEditPage(button);
+        }
 
-/*
- * Use delegated events to handle clements that might not be rendered on a page yet
- */
-document.addEventListener('click', event => {
-	if (event.target.matches('.edit-btn')) {
-		event.preventDefault();
-		const button = event.target;
-		animateAndRedirectToEditPage(button);
-	}
+        if (event.target.matches('#youtube') || 
+            event.target.matches('#github')  || 
+            event.target.matches('#twitter') || event.target.matches('#facebook')) {
 
-	if (event.target.matches('#youtube') || 
-		event.target.matches('#github')  || 
-		event.target.matches('#twitter') || event.target.matches('#facebook')) {
+            const socialButton = event.target;
+            handleSocialLinkForm(socialButton);
+        }
 
-		const socialButton = event.target;
-		handleSocialLinkForm(socialButton);
-	}
-
-    if (event.target.matches('.follow-btn')) {
-        event.preventDefault();
-        const button = event.target;
-        followOrUnfollowUser(button);
-    }
+        if (event.target.matches('.follow-btn')) {
+            event.preventDefault();
+            const button = event.target;
+            followOrUnfollowUser(button);
+        }
+    });
 });
