@@ -13,10 +13,12 @@
             <li class="nav-item">
                 <a class="nav-link active" href="/">GIFy <span class="sr-only">(current)</span></a>
             </li>
-            {% if section == "index" %}
+            {% if request.user.is_authenticated %}
+            {% if section == 'index' %}
             <li class="nav-item">
                 <a class="nav-link" id="open" href="#">Add</a>
             </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" id="" href="#">Wall</a>
             </li>
