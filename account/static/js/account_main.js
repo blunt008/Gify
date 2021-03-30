@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /*
-     * Use delegated events to handle clements that might not 
+     * Use delegated events to handle elements that might not 
      * be rendered on a page yet
      */
     document.addEventListener('click', event => {
