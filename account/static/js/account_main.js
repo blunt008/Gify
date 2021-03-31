@@ -311,7 +311,7 @@ const followOrUnfollowUser = async (button) => {
             'profile_id': profileID,
             'action': action
         })
-        
+
     })
 
     if (response.ok) {
