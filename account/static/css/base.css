@@ -147,7 +147,7 @@ a:hover {
 #profile-container {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
     margin: 5em auto;
     padding: 2em;
 }
@@ -547,6 +547,7 @@ a:hover {
 	border-radius: 8px;
 	overflow: hidden;
 	height: 400px;
+    width: 100%;
 }
 
 .profile-card-edit {
