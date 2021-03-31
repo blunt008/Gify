@@ -263,3 +263,54 @@ def update_social(request):
         return JsonResponse({'status': 'ok'}, status=201)
     else:
         return JsonResponse({'status': "Error updating social profiles. Check your links..."}, status=422)
+
+
+@login_required
+@require_POST
+def follow_unfollow(request):
+    """
+    Handle follow / unfollow logic. Requests
+    sent via AJAX
+    """
+    body_parsed = json.loads(request.body)
+    profile_id_to_follow = body_parsed.get('profile_id', None)
+    action = body_parsed.get('action', None)
+
+    profile_to_follow = Profile.objects.get(id=profile_id_to_follow)
+
+    if action and profile_to_follow:
+        if action == 'follow':
+            request.user.profile.following.add(profile_id_to_follow)
+        elif action == 'unfollow':
+            request.user.profile.following.remove(profile_id_to_follow)
+        return JsonResponse({'status': 'ok'}, status=200)
+    return JsonResponse({'status': f'Error handling "{action}" action'},
+                         status=422)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
