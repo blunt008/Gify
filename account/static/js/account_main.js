@@ -295,8 +295,37 @@ const handleSocialProfileUpdateSuccess = (response) => {
 /*
  * Handle un / following users
  */
-const followOrUnfollowUser = (button) => {
-    console.log(button);
+const followOrUnfollowUser = async (button) => {
+    const action = button.dataset.action;
+    const profileID = button.dataset.id;
+    const csrfToken = Cookies.get('csrftoken');
+
+    const response = await fetch('/account/follow_unfollow/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json'
+        },
+        mode: 'same-origin',
+        body: JSON.stringify({
+            'profile_id': profileID,
+            'action': action
+        })
+        
+    })
+
+    if (response.ok) {
+        handleFollowUnfollowSuccess(button, action);
+    }
+};
+
+
+const handleFollowUnfollowSuccess = (button, action) => {
+    button.textContent = action == 'follow' ?
+        'Unfollow' : 'Follow';
+
+    button.dataset.action = action == 'follow' ?
+        'unfollow' : 'follow';
 };
 
 
