@@ -150,6 +150,8 @@ a:hover {
     width: 80%;
     margin: 5em auto;
     padding: 2em;
+    justify-content: center;
+    align-items: center;
 }
 
 #profile__about {
@@ -547,7 +549,6 @@ a:hover {
 	border-radius: 8px;
 	overflow: hidden;
 	height: 400px;
-    width: 100%;
 }
 
 .profile-card-edit {
