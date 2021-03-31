@@ -669,7 +669,7 @@ a:hover {
 	border: 2px solid #e66767;
 	border-radius: 6px;
 	margin-top: 16px;
-	transition: 0.199s linear;
+	transition: 0.1s linear;
     width: 11em;
 }
 
@@ -677,9 +677,6 @@ a:hover {
     transform: translateY(-2px);
 }
 
-.follow-btn:active {
-    transform: translateY(0);
-}
 
 .save-profile-btn {
 	display: inline-block;
@@ -697,6 +694,11 @@ a:hover {
 	background: #e66767;
 	color: #f2f2f2;
 	cursor: pointer;
+}
+
+.follow-btn:active {
+    transform: translateY(0);
+	background: transparent;
 }
 
 .card-footer {
