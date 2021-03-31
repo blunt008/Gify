@@ -672,6 +672,14 @@ a:hover {
 	transition: 0.3s linear;
 }
 
+.follow-btn:hover {
+    transform: translateY(-2px);
+}
+
+.follow-btn:active {
+    transform: translateY(0);
+}
+
 .save-profile-btn {
 	display: inline-block;
 	color: #e66767;
