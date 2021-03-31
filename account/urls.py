@@ -39,4 +39,5 @@ urlpatterns = [
             path("avatars/", views.get_avatars, name="get_avatars"),
             path("delete_avatar/", views.delete_avatar, name="delete_avatar"),
             path('update/social/', views.update_social, name='update_social'),
+            path('follow_unfollow/', views.follow_unfollow, name='follow'),
         ]
