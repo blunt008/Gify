@@ -670,6 +670,7 @@ a:hover {
 	border-radius: 6px;
 	margin-top: 16px;
 	transition: 0.3s linear;
+    width: 11em;
 }
 
 .follow-btn:hover {
