@@ -151,8 +151,6 @@ const createPost = (link, id) => {
     } else {
         container.appendChild(content);
     }
-
-    addEventListenerToComment();
 }
 
 
@@ -164,24 +162,6 @@ window.addEventListener("click", (event) => {
         removeModal();
     }
 });
-
-
-/*
- * Attach event listener to each comment button
- */
-const addEventListenerToComment = () => {
-    const comments = document.querySelectorAll('.comment_button');
-    comments.forEach(comment => comment.addEventListener('click', enableComments));
-}
-
-
-/*
- * Attach event listener to each like button
- */
-const addEventListenerToLikeButtons = () => {
-    const likeButtons = document.querySelectorAll('.like_button');
-    likeButtons.forEach(button => button.addEventListener('click', likeDislike));
-}
 
 
 /*
@@ -351,6 +331,13 @@ const handleCommentFormErrors = (commentInput) => {
 
 
 window.addEventListener('DOMContentLoaded', event => {
-    addEventListenerToComment();
-    addEventListenerToLikeButtons();
+    document.addEventListener('click', event => {
+        if (event.target.matches('.comment_button')) {
+            enableComments(event);
+        }
+
+        if (event.target.matches('.like_button')) {
+            likeDislike(event);
+        }
+    });
 });
