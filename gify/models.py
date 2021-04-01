@@ -10,6 +10,10 @@ class Post(models.Model):
         related_name="posts",
         on_delete=models.CASCADE
     )
+    user_likes = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='posts_likes',
+        blank=True)
     link = models.URLField()
     created = models.DateField(
         auto_now_add=True,
