@@ -11,7 +11,7 @@ class Post(models.Model):
         on_delete=models.CASCADE
     )
     user_likes = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
+        Profile,
         related_name='posts_likes',
         blank=True)
     link = models.URLField()

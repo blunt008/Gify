@@ -183,7 +183,9 @@ const enableComments = (event) => {
  * Like or unlike clicked post
  */
 const likeDislike = event => {
-    console.log(event);
+    const button = event.target;
+
+    button.classList.toggle('liked');
 };
 
 
