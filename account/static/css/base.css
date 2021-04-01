@@ -343,9 +343,9 @@ a:hover {
 }
 
 
-.post-buttons button:focus {
+.like_button:focus,
+.comment_button:focus {
     outline: none;
-    border: none;
 }
 
 .like_button.liked {
