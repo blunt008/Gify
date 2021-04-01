@@ -439,7 +439,7 @@ a:hover {
     background: rgb(228, 230, 235);
     border-radius: 5px;
     transition: all 0.3s;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
 }
 
 .new-comment-error {
@@ -448,6 +448,7 @@ a:hover {
 
 .new-comment-input:focus {
     outline: none;
+    border: 1px solid rgb(9 114 195 / 80%);
 }
 
 .add-new-post {
