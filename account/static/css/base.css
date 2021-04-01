@@ -452,7 +452,7 @@ a:hover {
 
 .add-new-post {
     padding: 0em;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     height: 0;
