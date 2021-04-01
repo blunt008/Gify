@@ -176,6 +176,15 @@ const addEventListenerToComment = () => {
 
 
 /*
+ * Attach event listener to each like button
+ */
+const addEventListenerToLikeButtons = () => {
+    const likeButtons = document.querySelectorAll('.like_button');
+    likeButtons.forEach(button => button.addEventListener('click', likeDislike));
+}
+
+
+/*
  * Show new comment input and post comments
  */
 const enableComments = (event) => {
@@ -188,6 +197,14 @@ const enableComments = (event) => {
 
     commentForm.addEventListener('submit', addNewComment);
 }
+
+
+/*
+ * Like or unlike clicked post
+ */
+const likeDislike = event => {
+    console.log(event);
+};
 
 
 /*
@@ -333,4 +350,7 @@ const handleCommentFormErrors = (commentInput) => {
 }
 
 
-window.addEventListener('DOMContentLoaded', addEventListenerToComment);
+window.addEventListener('DOMContentLoaded', event => {
+    addEventListenerToComment();
+    addEventListenerToLikeButtons();
+});
