@@ -37,8 +37,7 @@
 				{% else %}
                     {% with followers=user_profile.followers.all %}
                     <a href="#" class="follow-btn" data-id="{{ user_profile.id }}"
-                    data-action="{% if request.user.profile in followers %}un
-                                 {% endif %}follow">
+                    data-action="{% if request.user.profile in followers %}un{% endif %}follow">
                         {% if request.user.profile in followers %}
                         Unfollow
                         {% else %}
