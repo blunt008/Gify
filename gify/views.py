@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -101,3 +103,23 @@ def add_comment(request):
     else:
         errors = comment_form.errors.get_json_data(escape_html=True)
         return JsonResponse(errors, status=422)
+
+
+@login_required
+@require_POST
+def like_unlike(request):
+    """
+    Handle liking / unliking posts AJAX logic
+    """
+    body_parsed = json.loads(request.body)
+    post_id = body_parsed.get('id', None)
+    action = body_parsed.get('action', None)
+    post = Post.objects.get(id=post_id)
+
+    if post:
+        if action == 'like':
+            post.user_likes.add(request.user.profile)
+        else:
+            post.user_likes.remove(request.user.profile)
+        return JsonResponse({'status': 'ok'}, status=200)
+    return JsonResponse({'status': 'error'}, status=422)
