@@ -320,12 +320,19 @@ const followOrUnfollowUser = async (button) => {
 };
 
 
+
 const handleFollowUnfollowSuccess = (button, action) => {
+    const followers = document.getElementById('followers');
+
     button.textContent = action == 'follow' ?
         'Unfollow' : 'Follow';
 
     button.dataset.action = action == 'follow' ?
         'unfollow' : 'follow';
+
+    followers.textContent = action == 'follow' ?
+        parseInt(followers.textContent) + 1 : 
+        parseInt(followers.textContent) - 1 ;
 };
 
 
