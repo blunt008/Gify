@@ -57,12 +57,12 @@
 					</div>
 					<div class="border"></div>
 					<div class="item">
-						<span>127</span>
+            <span>{{ user_profile.following.count|default:'0' }}</span>
 						Following
 					</div>
 					<div class="border"></div>
 					<div class="item">
-						<span>120K</span>
+            <span>{{ user_profile.followers.count|default:'0' }}</span>
 						Followers
 					</div>
 				</div>
