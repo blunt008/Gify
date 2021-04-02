@@ -182,10 +182,32 @@ const enableComments = (event) => {
 /*
  * Like or unlike clicked post
  */
-const likeDislike = event => {
+const likeDislike = async (event) => {
+  const csrfToken = Cookies.get('csrftoken');
   const button = event.target;
+  const action = button.dataset.action;
+  const id = button.dataset.id;
 
-  button.classList.toggle('liked');
+  const response = await fetch('/like/', {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': csrfToken,
+      'Content-Type': 'application/json',
+    },
+    mode: 'same-origin',
+    body: JSON.stringify({
+      'id': id,
+      'action': action,
+    }),
+  })
+
+  if (response.ok) {
+    button.dataset.action = action == 'like' ?
+      'unlike' : 'like';
+    button.textContent = action == 'like' ?
+      'Liked' : 'Like';
+    button.classList.toggle('liked');
+  }
 };
 
 
