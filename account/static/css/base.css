@@ -544,7 +544,8 @@ a:hover {
     padding: 1px;
 }
 
-.profile-card {
+.profile-card,
+.profile-card-other {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
@@ -554,6 +555,10 @@ a:hover {
     height: 400px;
     width: 100%;
     margin-top: 5em;
+}
+
+.profile-card-other {
+    margin-top: 6em;
 }
 
 .profile-card-edit {

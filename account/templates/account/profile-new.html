@@ -9,7 +9,11 @@
 
 {% block content %}
 	<div id="profile-container">
+        {% if request.user.profile == user_profile %}
 		<div class="profile-card">
+        {% else %}
+		<div class="profile-card-other">
+        {% endif %}
 			<div class="card-header">
 				<div class="pic">
 					  {% with avatar=user_profile.get_avatar %}
