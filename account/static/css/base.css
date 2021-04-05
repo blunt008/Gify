@@ -554,22 +554,23 @@ a:hover {
     border-radius: 8px;
     height: 400px;
     width: 100%;
-    margin-top: 5em;
+    margin-top: 6em;
 }
 
 .profile-card-other {
-    margin-top: 6em;
+    margin-top: 7em;
 }
 
 .profile-card-edit {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
     border-radius: 8px;
-    overflow: hidden;
     height: 400px;
+    width: 100%;
+    margin-top: 20em;
     animation: appear 0.3s linear forwards;
     position: relative;
 }
@@ -766,9 +767,13 @@ form {
     align-items: center;
     background: transparent;
     border-radius: 5px;
-    bottom: 10%;
-    left: 12.5%;
-    width: 50%;
+    bottom: 95%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
     font-family: 'Lato', sans-serif;
     animation: showURL 0.2s linear forwards;
 }
@@ -784,12 +789,13 @@ form {
 
 .social-profile-url input {
     background: #5c5f64;
-    color: #f2f2f2;
+    color: white;
     width: 300px;
     padding: 7px 8px;
     border: none;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 0.7em;
+    width: 100%;
 }
 
 .social-profile-url input:focus {
@@ -805,7 +811,9 @@ form {
 }
 
 @media only screen and (min-width: 400px) {
-    .profile-card {
+    .profile-card,
+    .profile-card-edit,
+    .profile-card-other {
         width: 90%;
     }
 
@@ -816,18 +824,28 @@ form {
 
 
 @media only screen and (min-width: 500px) {
-    .profile-card {
+    .profile-card,
+    .profile-card-edit,
+    .profile-card-other {
         width: 80%;
     }
 }
 
 
 @media only screen and (min-width: 600px) {
-    .profile-card {
+    .profile-card, 
+    .profile-card-edit,
+    .profile-card-other {
         width: 100%;
         flex-direction: row;
         overflow: hidden;
+        margin-top: 3em;
     }
+
+    #profile-container {
+        width: 95%;
+    }
+
 
     .about {
         margin-top: 25%;
@@ -836,9 +854,36 @@ form {
     .post {
         width: 50%;
     }
+
+    .social-profile-url {
+        bottom: 20%;
+        width: 45%;
+        left: 3%;
+        margin: 0;
+    }
+}
+
+
+@media only screen and (min-width: 800px) {
+    .profile-card, 
+    .profile-card-edit,
+    .profile-card-other {
+        width: 90%;
+        flex-direction: row;
+        overflow: hidden;
+        margin-top: 3em;
+    }
 }
 
 
 
-
-
+@media only screen and (min-width: 1000px) {
+    .profile-card, 
+    .profile-card-edit,
+    .profile-card-other {
+        width: 70%;
+        flex-direction: row;
+        overflow: hidden;
+        margin-top: 3em;
+    }
+}
