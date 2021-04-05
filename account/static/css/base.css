@@ -808,6 +808,10 @@ form {
     .profile-card {
         width: 90%;
     }
+
+    .post {
+        width: 80%;
+    }
 }
 
 
@@ -827,6 +831,10 @@ form {
 
     .about {
         margin-top: 25%;
+    }
+
+    .post {
+        width: 50%;
     }
 }
 
