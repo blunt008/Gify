@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}The wall{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    {% include './list_ajax.html' %}
+{% endblock %}
