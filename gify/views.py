@@ -6,8 +6,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
-from .models import Post, Comment
+from .models import Post, Comment, Action
 from .forms import PostCreateForm, CommentForm
+from .utils import create_action
 
 
 @login_required
@@ -41,26 +42,11 @@ def wall(request):
     """
     Handle logic for wall view
     """
-    posts = Post.objects.all()
-    paginator = Paginator(posts, 3)
-    page = request.GET.get("page", "")
-    try:
-        posts = paginator.page(page)
-        if request.META["CONTENT_TYPE"] == "application/json":
-            return render(
-                request,
-                "gify/list_ajax.html",
-                {"posts": posts}
-            )
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-        return HttpResponse("")
+    actions = Action.objects.all()
 
     return render(request,
                   "gify/wall.html",
-                  {"section": "index", "posts": posts})
+                  {"section": "wall", "actions": actions})
 
 
 @login_required
@@ -77,6 +63,7 @@ def post_create(request):
             new_post = form.save(commit=False)
             new_post.profile = user_profile
             new_post.save()
+            create_action(user_profile, 'created post', new_post)
             return JsonResponse({
                 "status": "ok",
                 "link": new_post.link,
