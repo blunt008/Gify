@@ -36,6 +36,32 @@ def index(request):
                   "gify/home.html",
                   {"section": "index", "posts": posts})
 
+@login_required
+def wall(request):
+    """
+    Handle logic for wall view
+    """
+    posts = Post.objects.all()
+    paginator = Paginator(posts, 3)
+    page = request.GET.get("page", "")
+    try:
+        posts = paginator.page(page)
+        if request.META["CONTENT_TYPE"] == "application/json":
+            return render(
+                request,
+                "gify/list_ajax.html",
+                {"posts": posts}
+            )
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+        return HttpResponse("")
+
+    return render(request,
+                  "gify/wall.html",
+                  {"section": "index", "posts": posts})
+
 
 @login_required
 def post_create(request):
