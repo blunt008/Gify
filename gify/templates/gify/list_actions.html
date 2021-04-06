@@ -1,0 +1,16 @@
+{% load thumbnail %}
+{% for action in actions %}
+{% with profile=action.profile %}
+<div class="action">
+    <div class="action-header">
+        <a href="{% url 'account:profile' profile.user.username %}"><img src="{{ profile.get_avatar.url }}" alt=""></a>
+        <p class="card-text">{{ action.profile.username }} {{ action.verb }}</p>
+    </div>
+    <div class="action-video">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="{{ action.target.link }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</div>
+{% endwith %}
+{% endfor %}
