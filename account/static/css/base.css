@@ -313,6 +313,35 @@ a:hover {
     margin-top: 7.5%;
 }
 
+.action {
+    margin-bottom: 1.5rem;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 6em;
+    margin-bottom: 1.5rem;
+    transition: all 0.5s;
+    padding: 10px;
+    background: rgb(255 255 255 / 4%);
+}
+
+.action-header {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.action-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 2em;
+}
+
+.action-video {
+    padding: 5%;
+}
+
 .card-body {
     padding: 0.5em;
 }
