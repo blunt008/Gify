@@ -6,13 +6,14 @@
 </div>
 	<div class="card-body">
 		<div class="post-buttons">
-      {% with user_like=post.user_likes.all %}
+      {% with user_like=post.user_likes.all user_profile=request.user.profile %}
 			<button class="comment_button">Comment</button>
-			<button class="like_button"
+      <button class="like_button {% if user_profile in user_like %}
+                    liked{%endif%}"
               data-id="{{ post.id }}"
-              data-action="{% if request.user.profile in user_like %}un
+              data-action="{% if user_profile in user_like %}un
                            {% endif %}like">
-        {% if request.user.profile in user_like %}
+        {% if user_profile in user_like %}
           Liked
         {% else %}
           Like
