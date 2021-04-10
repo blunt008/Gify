@@ -65,6 +65,7 @@ class Action(models.Model):
     target = GenericForeignKey('target_ct', 'target_id')
     created = models.DateTimeField(auto_now_add=True,
                                    db_index=True)
+    url = models.URLField(blank=True, null=True)
 
     class Meta:
         ordering = ('-created',)
