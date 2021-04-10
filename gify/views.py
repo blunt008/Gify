@@ -133,8 +133,12 @@ def like_unlike(request):
 
     if post:
         if action == 'like':
+            create_action(request.user.profile, 'liked', post, 
+                          post.link)
             post.user_likes.add(request.user.profile)
         else:
+            create_action(request.user.profile, 'unliked', post, 
+                          post.link)
             post.user_likes.remove(request.user.profile)
         return JsonResponse({'status': 'ok'}, status=200)
     return JsonResponse({'status': 'error'}, status=422)
