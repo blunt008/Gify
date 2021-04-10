@@ -63,7 +63,7 @@ def post_create(request):
             new_post = form.save(commit=False)
             new_post.profile = user_profile
             new_post.save()
-            create_action(user_profile, 'created post', new_post)
+            create_action(user_profile, 'created post', new_post, new_post.link)
             return JsonResponse({
                 "status": "ok",
                 "link": new_post.link,
@@ -108,6 +108,8 @@ def add_comment(request):
         new_comment.post = post
         new_comment.author = request.user.username
         new_comment.save()
+        create_action(request.user.profile, 'commented on', new_comment,
+                      new_comment.post.link)
         return JsonResponse({'comment': {
             'author': request.user.username,
             'body': new_comment.body,
