@@ -15,6 +15,9 @@
         </div>
     </div>
     {% endif %}
+    {% if action.comment %}
+    <p class="action-comment">{{ action.comment }}</p>
+    {% endif %}
     <span class="action-date">{{ action.created|timesince }} ago</span>
 </div>
 {% endwith %}
