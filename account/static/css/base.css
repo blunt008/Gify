@@ -356,6 +356,7 @@ a:hover {
     font-size: 0.8em;
     color: rgb(228, 230, 235);
     align-self: flex-end;
+    margin-top: 1.5em;
 }
 
 .card-body {
