@@ -69,3 +69,6 @@ class Action(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+    def __str__(self):
+        return f'{self.profile.username} {self.verb}'
