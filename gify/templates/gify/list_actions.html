@@ -4,13 +4,17 @@
 <div class="action">
     <div class="action-header">
         <a href="{% url 'account:profile' profile.user.username %}"><img src="{{ profile.get_avatar.url }}" alt=""></a>
-        <p class="card-text">{{ action.profile.username }} {{ action.verb }}</p>
+        <p class="card-text">{{ action.profile.username }} {{ action.verb }}
+        {% if 'following' in action.verb %}{{ action.target.username }}{% endif %}
+        </p>
     </div>
+    {% if action.url %}
     <div class="action-video">
         <div class="embed-responsive embed-responsive-16by9">
             <iframe src="{{ action.url }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
         </div>
     </div>
+    {% endif %}
 </div>
 {% endwith %}
 {% endfor %}
