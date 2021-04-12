@@ -66,6 +66,9 @@ class Action(models.Model):
     created = models.DateTimeField(auto_now_add=True,
                                    db_index=True)
     url = models.URLField(blank=True, null=True)
+    comment = models.CharField(max_length=250,
+                               blank=True,
+                               null=True)
 
     class Meta:
         ordering = ('-created',)
