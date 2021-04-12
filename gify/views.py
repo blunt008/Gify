@@ -42,8 +42,13 @@ def wall(request):
     """
     Handle logic for wall view
     """
-    actions = Action.objects.all()
+    actions = Action.objects.exclude(profile=request.user.profile)
+    following_ids = request.user.profile.following.values_list('id', flat=True)
 
+    if following_ids:
+        actions = actions.filter(profile_id__in=following_ids)
+
+    actions = actions[:10]
     return render(request,
                   "gify/wall.html",
                   {"section": "wall", "actions": actions})
