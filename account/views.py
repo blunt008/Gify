@@ -29,6 +29,7 @@ from .forms import (LoginForm, ChangePasswordForm,
                     EditUserForm, MyPasswordResetForm, 
                     MyPasswordResetConfirmForm)
 from .models import Avatar, Profile
+from gify.utils import create_action
 
 
 class MyPasswordResetConfirmView(PasswordResetConfirmView):
@@ -281,6 +282,9 @@ def follow_unfollow(request):
     if action and profile_to_follow:
         if action == 'follow':
             request.user.profile.following.add(profile_id_to_follow)
+            create_action(request.user.profile,
+                          'is following',
+                          profile_to_follow)
         elif action == 'unfollow':
             request.user.profile.following.remove(profile_id_to_follow)
         return JsonResponse({'status': 'ok'}, status=200)
