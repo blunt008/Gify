@@ -325,10 +325,6 @@ a:hover {
   flex-direction: column;
 }
 
-.action:nth-of-type(2) {
-  margin-top: 5em;
-}
-
 .action-header {
   display: flex;
   align-items: center;
