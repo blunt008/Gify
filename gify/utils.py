@@ -6,7 +6,8 @@ from django.contrib.contenttypes.models import ContentType
 from .models import Action
 
 
-def create_action(profile, verb, target=None, url=None) -> bool:
+def create_action(profile, verb, target=None,
+                  comment=None, url=None) -> bool:
     """
     Util function for creating actions
     """
@@ -27,6 +28,7 @@ def create_action(profile, verb, target=None, url=None) -> bool:
         action = Action(profile=profile,
                         verb=verb,
                         target=target,
+                        comment=comment,
                         url=url)
         action.save()
         return True
