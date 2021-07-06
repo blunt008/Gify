@@ -2,7 +2,7 @@
 ### TODO
 1) Add Docker support
 2) Finish the app: )
-3) Think about adding tests?
+3) Add tests
 4) Deploy
 
 For a quick demo you can always:
